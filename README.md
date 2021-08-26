@@ -1,8 +1,7 @@
-<p align="center">
-<img src="./public/nextdotjs.svg" alt="Next.js" />
-<img src="./public/tailwindcss.svg" alt="Tailwind CSS" />
-<img src="./public/storybook.svg" alt="Storybook" />
-</p>
+# Shortn
+Shortn is a simple URL shortener. 
+
+---
 
 # Next.js, Tailwind CSS, Supabase, and Storybook
 A quick start template for full stack projects with Next.js, Tailwind CSS, Supabase, and Storybook.
