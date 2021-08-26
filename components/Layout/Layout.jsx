@@ -2,53 +2,47 @@ import { useEffect, useState } from "react";
 import { supabase } from "../../utils/supabaseClient";
 import Navigation from "./Navigation";
 import { useRouter } from "next/router";
+import axios from "axios";
 
 export default function Layout({ children }) {
-  const [loading, setLoading] = useState(true)
-  const [session, setSession] = useState(null)
-  const [username, setUsername] = useState(null)
+  const [userData, setUserData] = useState({
+    username: null,
+    website: null,
+    avatar_url: null,
+  })
   const router = useRouter()
   const currentUrl = router.asPath
 
   useEffect(() => {
-    setSession(supabase.auth.session())
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session)
-    })
+  let responseData;
+  const user = supabase.auth.user()
+    if (user) {
+      const id = user.id
+      axios
+        .get('/api/profiles', {
+          params: {
+            id,
+          }
+        })
+        .then(function (response) {
+          responseData = response.data.data
+          setUserData({
+            username: responseData.username,
+            website: responseData.website,
+            avatar_url: responseData['avatar_url'],
+          })
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+    }
   }, [])
 
-  useEffect(() => {
-    getUsername()
-  }, [session])
-  async function getUsername() {
-    try {
-      setLoading(true)
-      const user = supabase.auth.user()
 
-      let { data, error, status } = await supabase
-        .from('profiles')
-        .select(`username`)
-        .eq('id', user.id)
-        .single()
-
-      if (error && status !== 406) {
-        throw error
-      }
-
-      if (data) {
-        setUsername(data.username)
-      }
-    } catch (error) {
-      alert(error.message)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-
+  console.log(userData)
   return (
     <div>
-      <Navigation username={username} currentUrl={currentUrl} />
+      <Navigation username={userData.username} currentUrl={currentUrl} />
       {children}
     </div>
   )
