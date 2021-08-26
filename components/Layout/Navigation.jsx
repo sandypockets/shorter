@@ -9,20 +9,16 @@ function classNames(...classes) {
 
 const navItems = [
     {
-    name: 'Dashboard',
+    name: 'Home',
     href: '/',
   },
   {
-    name: 'Team',
-    href: '/team',
+    name: 'Create new URL',
+    href: '/create-new-url',
   },
   {
-    name: 'Projects',
-    href: '/projects',
-  },
-  {
-    name: 'Calendar',
-    href: '/calendar',
+    name: 'Your URLs',
+    href: '/your-urls',
   },
 ]
 
