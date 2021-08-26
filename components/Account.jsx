@@ -10,6 +10,12 @@ function Account() {
   const [session, setSession] = useState(supabase.auth.session())
   const user = supabase.auth.user()
 
+  const [userData, setUserData] = useState({
+    username: null,
+    website: null,
+    avatar_url: null,
+  })
+
   let responseData;
 
   useEffect(() => {
@@ -24,9 +30,11 @@ function Account() {
         })
         .then(function (response) {
           responseData = response.data.data
-          setUsername(responseData.username)
-          setWebsite(responseData.website)
-          setAvatarUrl(responseData['avatar_url'])
+          setUserData({
+            username: responseData.username,
+            website: responseData.website,
+            avatar_url: responseData['avatar_url'],
+          })
         })
         .catch(function (error) {
           console.log(error);
@@ -72,7 +80,8 @@ function Account() {
               htmlFor="email">
               Email
             </label>
-            <input className="w-full" id="email" type="text" value={user.email} disabled />
+            <input
+              className="w-full" id="email" type="text" value={userData.email} disabled />
           </div>
 
           <div className="py-2">
@@ -85,8 +94,8 @@ function Account() {
               className="w-full"
               id="username"
               type="text"
-              value={username || ''}
-              onChange={(e) => setUsername(e.target.value)}
+              value={userData.username || ''}
+              onChange={(e) => setUserData(prev => ({ ...prev, username: e.target.value }))}
             />
           </div>
 
@@ -100,8 +109,8 @@ function Account() {
               className="w-full"
               id="website"
               type="website"
-              value={website || ''}
-              onChange={(e) => setWebsite(e.target.value)}
+              value={userData.website || ''}
+              onChange={(e) => setUserData(prev => ({ ...prev, website: e.target.value }))}
             />
           </div>
 

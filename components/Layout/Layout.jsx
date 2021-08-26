@@ -39,7 +39,7 @@ export default function Layout({ children }) {
   }, [])
 
 
-  console.log(userData)
+  console.log("42 Layout: ", userData)
   return (
     <div>
       <Navigation username={userData.username} currentUrl={currentUrl} />
