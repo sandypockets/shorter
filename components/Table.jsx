@@ -15,6 +15,11 @@ export default function Table({ urlsList, setUrlId, open, setOpen, setShortUrl, 
     }
   }
 
+  // Sort URLs by ID, to ensure they are not rearranged after editing
+  urlsList.sort(function(a, b) {
+    return a.id - b.id
+  })
+
   return (
     <div className="flex flex-col">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
