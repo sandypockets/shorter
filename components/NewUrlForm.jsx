@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "../utils/supabaseClient";
 import LoadingWheel from "./LoadingWheel";
 import SignIn from "../components/Auth";
+import Link from 'next/link'
 
 function NewUrlForm({ longUrl, setLongUrl, generateRandomString }) {
   const [urlsList, setUrlsList] = useState([])
@@ -80,6 +81,11 @@ function NewUrlForm({ longUrl, setLongUrl, generateRandomString }) {
 
           {urlsList.map((row, index) => (
             <div key={index}>
+              <Link href={`http://localhost:3000/urls/${row['short_url']}`}>
+              <a>
+                {`http://localhost:3000/urls/${row['short_url']}`}
+              </a>
+              </Link>
               <p>
                 {row.long_url}
               </p>
