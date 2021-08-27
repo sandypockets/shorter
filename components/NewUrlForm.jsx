@@ -8,7 +8,7 @@ import Link from 'next/link'
 function NewUrlForm() {
   const [session, setSession] = useState(supabase.auth.session())
   const [loading, setLoading] = useState(true)
-  const [longUrl, setLongUrl] = useState()
+  const [longUrl, setLongUrl] = useState(null)
 
   const generateRandomString =() => {
     return Math.random().toString(26).substring(2, 8);
