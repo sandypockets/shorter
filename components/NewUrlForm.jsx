@@ -6,10 +6,8 @@ import SignIn from "../components/Auth";
 import Link from 'next/link'
 
 function NewUrlForm() {
-  const [urlsList, setUrlsList] = useState([])
-  const [session, setSession] = useState(null)
+  const [session, setSession] = useState(supabase.auth.session())
   const [loading, setLoading] = useState(true)
-
   const [longUrl, setLongUrl] = useState()
 
   const generateRandomString =() => {
@@ -24,25 +22,9 @@ function NewUrlForm() {
     }, 900)
   }, [session])
 
-  useEffect(() => {
-    setSession(supabase.auth.session())
-    const user = supabase.auth.user()
-    axios
-      .get('/api/urls', {
-        params: {
-          id: user.id
-        }
-      })
-      .then(function (response) {
-        setUrlsList(response.data.data)
-        setLoading(false)
-      })
-  }, [])
-
   function handleSubmit (event) {
     event.preventDefault()
     setLoading(true)
-
     const user = supabase.auth.user()
     const randomString = generateRandomString()
 
