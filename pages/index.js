@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../utils/supabaseClient'
-import SignIn from "../components/Auth";
+import SignIn from "../components/Account/Auth";
 import { useRouter } from 'next/router'
 import HomePage from "../components/HomePage";
 import Layout from '../components/Layout/Layout'
-import LoadingWheel from "../components/LoadingWheel";
+import LoadingWheel from "../components/Utils/LoadingWheel";
 
 export default function Index() {
   const [session, setSession] = useState(null)

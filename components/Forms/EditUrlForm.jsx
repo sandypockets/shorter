@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {supabase} from "../utils/supabaseClient";
+import {supabase} from "../../utils/supabaseClient";
 import axios from "axios";
 
 export default function EditUrlForm({ shortUrl, urlId, currentLongUrl, setCurrentLongUrl, setEditedUrl }) {

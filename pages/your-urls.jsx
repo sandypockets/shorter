@@ -3,10 +3,10 @@ import {useEffect, useState} from "react";
 import {supabase} from "../utils/supabaseClient";
 import axios from "axios";
 import Link from "next/link";
-import Table from "../components/Table";
-import LoadingWheel from "../components/LoadingWheel";
-import SlideOver from "../components/SlideOver";
-import Modal from "../components/Modal";
+import Table from "../components/Utils/Table";
+import LoadingWheel from "../components/Utils/LoadingWheel";
+import SlideOver from "../components/Utils/SlideOver";
+import Modal from "../components/Utils/Modal";
 
 export default function YourUrls() {
   const [urlsList, setUrlsList] = useState([])

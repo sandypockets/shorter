@@ -1,8 +1,8 @@
 import axios from 'axios'
 import { useEffect, useState } from "react";
-import { supabase } from "../utils/supabaseClient";
-import LoadingWheel from "./LoadingWheel";
-import SignIn from "../components/Auth";
+import { supabase } from "../../utils/supabaseClient";
+import LoadingWheel from "../Utils/LoadingWheel";
+import SignIn from "../Account/Auth";
 import Link from 'next/link'
 
 function NewUrlForm() {

@@ -1,7 +1,7 @@
 import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
-import EditUrlForm from "./EditUrlForm";
+import EditUrlForm from "../Forms/EditUrlForm";
 
 export default function SlideOver({ open, setOpen, urlId, shortUrl, currentLongUrl, setCurrentLongUrl, setEditedUrl }) {
   return (
