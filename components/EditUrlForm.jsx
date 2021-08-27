@@ -3,15 +3,11 @@ import {supabase} from "../utils/supabaseClient";
 import axios from "axios";
 
 export default function EditUrlForm({ shortUrl, urlId, currentLongUrl, setCurrentLongUrl, setEditedUrl }) {
-  const [session, setSession] = useState(supabase.auth.session())
-  const [loading, setLoading] = useState(true)
   const [longUrl, setLongUrl] = useState(currentLongUrl)
 
   function handleSubmit (event) {
     event.preventDefault()
-    setLoading(true)
     const user = supabase.auth.user()
-
     axios.post('/api/edit-url', {
       urlId,
       shortUrl,
@@ -21,14 +17,11 @@ export default function EditUrlForm({ shortUrl, urlId, currentLongUrl, setCurren
       .then(function (response) {
         console.log("URL POST response: ", response)
         setLongUrl(currentLongUrl)
-        setLoading(false)
       })
       .catch(function (error) {
         console.log(error)
-        setLoading(false)
       })
       .finally(function () {
-        setLoading(false)
         setEditedUrl(currentLongUrl)
       })
   }
@@ -67,7 +60,7 @@ export default function EditUrlForm({ shortUrl, urlId, currentLongUrl, setCurren
               className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
               onClick={handleClear}
             >
-              Clear
+              Cancel
             </button>
             <button
               type="submit"

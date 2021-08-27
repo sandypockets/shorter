@@ -36,9 +36,6 @@ async function updateProfile(req, res) {
       .then((response) => {
         res.status(response.status).json({ response })
       })
-    if (status === '200') {
-        console.log("status 200!")
-    }
     if (error) {
       throw error
     }

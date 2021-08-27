@@ -1,6 +1,15 @@
 import Link from 'next/link'
 
-export default function Table({ urlsList, setUrlId, open, setOpen, setShortUrl, currentLongUrl, setCurrentLongUrl }) {
+export default function Table(
+  {
+    urlsList,
+    setUrlId,
+    open,
+    setOpen,
+    setShortUrl,
+    setCurrentLongUrl
+  }
+  ) {
 
   const handleEditClick = (id, short, long) => {
     console.log("handle click")
@@ -15,7 +24,6 @@ export default function Table({ urlsList, setUrlId, open, setOpen, setShortUrl, 
     }
   }
 
-  // Sort URLs by ID, to ensure they are not rearranged after editing
   urlsList.sort(function(a, b) {
     return a.id - b.id
   })
@@ -32,13 +40,13 @@ export default function Table({ urlsList, setUrlId, open, setOpen, setShortUrl, 
                   scope="col"
                   className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                 >
-                  Short URL
+                  Shortn URL
                 </th>
                 <th
                   scope="col"
                   className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                 >
-                  Long URL
+                  Original URL
                 </th>
                 <th
                   scope="col"

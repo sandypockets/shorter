@@ -28,10 +28,7 @@ async function editUrl(req, res) {
 }
 
 export default function handler(req, res) {
-  console.log("FIRED!")
   if (req.method === 'POST') {
-    console.log("FIRED! POST!")
-    // Post things
     editUrl(req, res)
   } else if (req.method === 'GET') {
     // Get things

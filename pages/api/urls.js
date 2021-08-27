@@ -19,7 +19,6 @@ async function getUrls(req, res) {
   }
 }
 
-
 async function addNewUrl(req, res) {
   const { randomString, longUrl, userId } = req.body
   try {
@@ -40,13 +39,9 @@ async function addNewUrl(req, res) {
 }
 
 export default function handler(req, res) {
-  console.log("FIRED!")
   if (req.method === 'POST') {
-  console.log("FIRED! POST!")
-    // Post things
     addNewUrl(req, res)
   } else if (req.method === 'GET') {
-    // Get things
     getUrls(req, res)
   } else {
     res.send("Something's not right. Check your query.")
