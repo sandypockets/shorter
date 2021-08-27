@@ -79,14 +79,14 @@ function NewUrlForm({ longUrl, setLongUrl, generateRandomString }) {
         </form>
 
           {urlsList.map((row, index) => (
-            <>
+            <div key={index}>
               <p>
                 {row.long_url}
               </p>
               <p>
                 {row.short_url}
               </p>
-            </>
+            </div>
           ))}
 
         </>
