@@ -15,6 +15,8 @@ export default function YourUrls() {
   const [currentLongUrl, setCurrentLongUrl] = useState(null)
   const [shortUrl, setShortUrl] = useState(null)
 
+  const [urlId, setUrlId] = useState(null)
+
   // Loading delay
   useEffect(() => {
     setLoading(true)
@@ -53,8 +55,8 @@ export default function YourUrls() {
         </div>
       ) : (
         <>
-          <Table urlsList={urlsList} open={open} setOpen={setOpen} setShortUrl={setShortUrl} setCurrentLongUrl={setCurrentLongUrl} />
-          <SlideOver open={open} setOpen={setOpen} shortUrl={shortUrl} currentLongUrl={currentLongUrl} setCurrentLongUrl={setCurrentLongUrl} />
+          <Table urlsList={urlsList} setUrlId={setUrlId} open={open} setOpen={setOpen} setShortUrl={setShortUrl} setCurrentLongUrl={setCurrentLongUrl} />
+          <SlideOver urlId={urlId} open={open} setOpen={setOpen} shortUrl={shortUrl} currentLongUrl={currentLongUrl} setCurrentLongUrl={setCurrentLongUrl} />
         </>
       )}
         </Layout>

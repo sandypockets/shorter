@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {supabase} from "../utils/supabaseClient";
 import axios from "axios";
 
-export default function EditUrlForm({ shortUrl, currentLongUrl, setCurrentLongUrl }) {
+export default function EditUrlForm({ shortUrl, urlId, currentLongUrl, setCurrentLongUrl }) {
   const [session, setSession] = useState(supabase.auth.session())
   const [loading, setLoading] = useState(true)
   const [longUrl, setLongUrl] = useState(currentLongUrl)
@@ -13,12 +13,14 @@ export default function EditUrlForm({ shortUrl, currentLongUrl, setCurrentLongUr
     const user = supabase.auth.user()
 
     axios.post('/api/edit-url', {
+      urlId,
       shortUrl,
       newLongUrl: currentLongUrl,
       userId: user.id,
     })
       .then(function (response) {
         console.log("URL POST response: ", response)
+        setLongUrl(currentLongUrl)
         setLoading(false)
       })
       .catch(function (error) {

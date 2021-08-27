@@ -1,12 +1,13 @@
 import { supabase } from "../../utils/supabaseClient";
 
 async function editUrl(req, res) {
-  const { shortUrl, newLongUrl } = req.body
+  const { urlId, shortUrl, newLongUrl, userId } = req.body
   try {
     const updates = {
-      "short_url": shortUrl,
+      "id": urlId,
       "long_url": newLongUrl,
-      updated_at: new Date(),
+      "short_url": shortUrl,
+      "user_id": userId,
     }
     let { error } = await supabase
       .from('urls')
