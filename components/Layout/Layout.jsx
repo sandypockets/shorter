@@ -43,7 +43,9 @@ export default function Layout({ children }) {
   return (
     <div>
       <Navigation username={userData.username} currentUrl={currentUrl} />
-      {children}
+      <div className="m-10">
+        {children}
+      </div>
     </div>
   )
 }
