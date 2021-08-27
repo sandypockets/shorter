@@ -3,7 +3,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
 import EditUrlForm from "./EditUrlForm";
 
-export default function SlideOver({ open, setOpen, currentLongUrl }) {
+export default function SlideOver({ open, setOpen, shortUrl, currentLongUrl, setCurrentLongUrl }) {
   return (
     <>
       {currentLongUrl && (
@@ -40,7 +40,7 @@ export default function SlideOver({ open, setOpen, currentLongUrl }) {
                         </div>
                       </div>
                       <div className="mt-6 relative flex-1 px-4 sm:px-6">
-                        <EditUrlForm currentLongUrl={currentLongUrl} />
+                        <EditUrlForm shortUrl={shortUrl} currentLongUrl={currentLongUrl} setCurrentLongUrl={setCurrentLongUrl} />
                       </div>
                     </div>
                   </div>

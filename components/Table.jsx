@@ -1,11 +1,12 @@
 import Link from 'next/link'
 
-export default function Table({ urlsList, open, setOpen, currentLongUrl, setCurrentLongUrl }) {
+export default function Table({ urlsList, open, setOpen, setShortUrl, currentLongUrl, setCurrentLongUrl }) {
 
-  const handleEditClick = (long) => {
+  const handleEditClick = (short, long) => {
     console.log("handle click")
     console.log(long)
     setCurrentLongUrl(long)
+    setShortUrl(short)
     if (open) {
       setOpen(false)
     } else {
@@ -64,7 +65,7 @@ export default function Table({ urlsList, open, setOpen, currentLongUrl, setCurr
                     <button
                       type="button"
                       className="mx-2 inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-                      onClick={() => handleEditClick(url['long_url'])}
+                      onClick={() => handleEditClick(url['short_url'], url['long_url'])}
                     >
                       <a href="#" className="text-white-600">
                         Edit

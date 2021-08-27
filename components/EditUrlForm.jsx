@@ -2,24 +2,19 @@ import {useEffect, useState} from "react";
 import {supabase} from "../utils/supabaseClient";
 import axios from "axios";
 
-export default function EditUrlForm({ currentLongUrl, setCurrentLongUrl }) {
+export default function EditUrlForm({ shortUrl, currentLongUrl, setCurrentLongUrl }) {
   const [session, setSession] = useState(supabase.auth.session())
   const [loading, setLoading] = useState(true)
-  const [longUrl, setLongUrl] = useState()
-
-  const generateRandomString =({ currentLongUrl }) => {
-    return Math.random().toString(26).substring(2, 8);
-  }
+  const [longUrl, setLongUrl] = useState(currentLongUrl)
 
   function handleSubmit (event) {
     event.preventDefault()
     setLoading(true)
     const user = supabase.auth.user()
-    const randomString = generateRandomString()
 
-    axios.post('/api/urls/edit', {
-      randomString,
-      longUrl,
+    axios.post('/api/edit-url', {
+      shortUrl,
+      newLongUrl: currentLongUrl,
       userId: user.id,
     })
       .then(function (response) {
@@ -36,7 +31,11 @@ export default function EditUrlForm({ currentLongUrl, setCurrentLongUrl }) {
   }
 
   const handleClear = () => {
-    setCurrentLongUrl('')
+    setCurrentLongUrl(longUrl)
+  }
+
+  const handleChange = (event) => {
+    setCurrentLongUrl(event.target.value)
   }
 
   return (
@@ -54,7 +53,7 @@ export default function EditUrlForm({ currentLongUrl, setCurrentLongUrl }) {
               placeholder="https://google.com"
               value={currentLongUrl}
               className="mx-auto max-w-lg block w-full shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm border-gray-300 rounded-md"
-              onChange={(e) => setCurrentLongUrl(e.target.value)}
+              onChange={(event) => handleChange(event)}
             />
           </div>
         </div>
