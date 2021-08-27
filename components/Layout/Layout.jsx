@@ -3,6 +3,7 @@ import { supabase } from "../../utils/supabaseClient";
 import Navigation from "./Navigation";
 import { useRouter } from "next/router";
 import axios from "axios";
+import Footer from "../Footer";
 
 export default function Layout({ children }) {
   const [userData, setUserData] = useState({
@@ -46,6 +47,7 @@ export default function Layout({ children }) {
       <div className="m-10">
         {children}
       </div>
+      <Footer />
     </div>
   )
 }
