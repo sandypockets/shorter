@@ -1,6 +1,18 @@
 import Link from 'next/link'
 
-export default function Table({ urlsList }) {
+export default function Table({ urlsList, open, setOpen, currentLongUrl, setCurrentLongUrl }) {
+
+  const handleEditClick = (long) => {
+    console.log("handle click")
+    console.log(long)
+    setCurrentLongUrl(long)
+    if (open) {
+      setOpen(false)
+    } else {
+      setOpen(true)
+    }
+  }
+
   return (
     <div className="flex flex-col">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -34,7 +46,7 @@ export default function Table({ urlsList }) {
               </thead>
               <tbody>
               {urlsList.map((url, urlIdx) => (
-                <tr key={url.email} className={urlIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                <tr key={urlIdx} className={urlIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-600">
                     <Link href={`/urls/${url['short_url']}`}>
                       <a className="hover:text-gray-800">
@@ -52,6 +64,7 @@ export default function Table({ urlsList }) {
                     <button
                       type="button"
                       className="mx-2 inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                      onClick={() => handleEditClick(url['long_url'])}
                     >
                       <a href="#" className="text-white-600">
                         Edit
