@@ -13,8 +13,6 @@ export default function Table(
   ) {
 
   const handleEditClick = (id, short, long) => {
-    console.log("handle click")
-    console.log(long)
     setUrlId(id)
     setCurrentLongUrl(long)
     setShortUrl(short)
