@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {supabase} from "../utils/supabaseClient";
 import axios from "axios";
 
-export default function EditUrlForm({ shortUrl, urlId, currentLongUrl, setCurrentLongUrl }) {
+export default function EditUrlForm({ shortUrl, urlId, currentLongUrl, setCurrentLongUrl, setEditedUrl }) {
   const [session, setSession] = useState(supabase.auth.session())
   const [loading, setLoading] = useState(true)
   const [longUrl, setLongUrl] = useState(currentLongUrl)
@@ -29,6 +29,7 @@ export default function EditUrlForm({ shortUrl, urlId, currentLongUrl, setCurren
       })
       .finally(function () {
         setLoading(false)
+        setEditedUrl(currentLongUrl)
       })
   }
 
