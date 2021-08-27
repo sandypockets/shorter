@@ -6,6 +6,7 @@ import Link from "next/link";
 import Table from "../components/Table";
 import LoadingWheel from "../components/LoadingWheel";
 import SlideOver from "../components/SlideOver";
+import Modal from "../components/Modal";
 
 export default function YourUrls() {
   const [urlsList, setUrlsList] = useState([])
@@ -18,6 +19,7 @@ export default function YourUrls() {
   const [urlId, setUrlId] = useState(null)
 
   const [editedUrl, setEditedUrl] = useState(null)
+  const [showModal, setShowModal] = useState(false)
 
   // Loading delay
   useEffect(() => {
@@ -56,8 +58,11 @@ export default function YourUrls() {
         </div>
       ) : (
         <>
-          <Table urlsList={urlsList} setUrlId={setUrlId} open={open} setOpen={setOpen} setShortUrl={setShortUrl} setCurrentLongUrl={setCurrentLongUrl} />
+          <Table setShowModal={setShowModal} urlsList={urlsList} setUrlId={setUrlId} open={open} setOpen={setOpen} setShortUrl={setShortUrl} setCurrentLongUrl={setCurrentLongUrl} />
           <SlideOver setEditedUrl={setEditedUrl} urlId={urlId} open={open} setOpen={setOpen} shortUrl={shortUrl} currentLongUrl={currentLongUrl} setCurrentLongUrl={setCurrentLongUrl} />
+          {showModal && (
+            <Modal showModal={showModal} setShowModal={setShowModal} />
+          )}
         </>
       )}
         </Layout>

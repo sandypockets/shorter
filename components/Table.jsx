@@ -7,7 +7,8 @@ export default function Table(
     open,
     setOpen,
     setShortUrl,
-    setCurrentLongUrl
+    setCurrentLongUrl,
+    setShowModal
   }
   ) {
 
@@ -22,6 +23,10 @@ export default function Table(
     } else {
       setOpen(true)
     }
+  }
+
+  const handleDeleteClick = () => {
+    setShowModal(true)
   }
 
   urlsList.sort(function(a, b) {
@@ -88,6 +93,7 @@ export default function Table(
                     <button
                       type="button"
                       className="mx-2 inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+                      onClick={handleDeleteClick}
                     >
                       <a href="#" className="text-white-600">
                         Delete
