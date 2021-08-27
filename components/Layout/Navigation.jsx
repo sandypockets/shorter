@@ -2,6 +2,7 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import Link from 'next/link'
+import { supabase } from "../../utils/supabaseClient";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -21,6 +22,10 @@ const navItems = [
     href: '/your-urls',
   },
 ]
+
+const handleSignOut = () => {
+  supabase.auth.signOut()
+}
 
 export default function Navigation({ currentUrl }) {
   return (
@@ -82,28 +87,26 @@ export default function Navigation({ currentUrl }) {
                     <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                       <Menu.Item>
                         {({ active }) => (
-                          <a
-                            href="/account"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                          >
-                            Your Profile
-                          </a>
+                          <Link href="/account">
+                            <a className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}>
+                              Your Profile
+                            </a>
+                          </Link>
+                        )}
+                      </Menu.Item>
+                      <Menu.Item>
+                        {({ active }) => (
+                          <Link href="/settings">
+                            <a className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}>
+                              Settings
+                            </a>
+                          </Link>
                         )}
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="#"
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                          >
-                            Settings
-                          </a>
-                        )}
-                      </Menu.Item>
-                      <Menu.Item>
-                        {({ active }) => (
-                          <a
-                            href="#"
+                            onClick={handleSignOut}
                             className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
                           >
                             Sign out
@@ -129,33 +132,6 @@ export default function Navigation({ currentUrl }) {
                 </Link>
               </div>
             ))}
-            {/*<div className="pt-2 pb-4 space-y-1">*/}
-            {/*  /!* Current: "bg-green-50 border-green-500 text-green-700", Default: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" *!/*/}
-            {/*  <a*/}
-            {/*    href="#"*/}
-            {/*    className="bg-green-50 border-green-500 text-green-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"*/}
-            {/*  >*/}
-            {/*    Dashboard*/}
-            {/*  </a>*/}
-            {/*  <a*/}
-            {/*    href="#"*/}
-            {/*    className="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"*/}
-            {/*  >*/}
-            {/*    Team*/}
-            {/*  </a>*/}
-            {/*  <a*/}
-            {/*    href="#"*/}
-            {/*    className="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"*/}
-            {/*  >*/}
-            {/*    Projects*/}
-            {/*  </a>*/}
-            {/*  <a*/}
-            {/*    href="#"*/}
-            {/*    className="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium"*/}
-            {/*  >*/}
-            {/*    Calendar*/}
-            {/*  </a>*/}
-            {/*</div>*/}
           </Disclosure.Panel>
         </>
       )}
