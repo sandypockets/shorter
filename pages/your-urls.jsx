@@ -28,7 +28,6 @@ export default function YourUrls() {
   useEffect(() => {
     setSession(supabase.auth.session())
     const user = supabase.auth.user()
-    console.log('user', user)
     axios
       .get('/api/urls', {
         params: {

@@ -39,8 +39,6 @@ export default function Layout({ children }) {
     }
   }, [])
 
-
-  console.log("42 Layout: ", userData)
   return (
     <div>
       <Navigation username={userData.username} currentUrl={currentUrl} />
