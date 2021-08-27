@@ -3,13 +3,16 @@ import {useEffect, useState} from "react";
 import {supabase} from "../utils/supabaseClient";
 import axios from "axios";
 import Link from "next/link";
-import Table from "../components/table";
+import Table from "../components/Table";
 import LoadingWheel from "../components/LoadingWheel";
+import SlideOver from "../components/SlideOver";
 
 export default function YourUrls() {
   const [urlsList, setUrlsList] = useState([])
   const [session, setSession] = useState(null)
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(null)
+  const [open, setOpen] = useState(false)
+  const [currentLongUrl, setCurrentLongUrl] = useState(null)
 
   // Loading delay
   useEffect(() => {
@@ -40,16 +43,17 @@ export default function YourUrls() {
   return (
     <>
         <Layout>
+          <h1 className="text-3xl font-semibold mb-10">
+            Your short URLs
+          </h1>
       {loading ? (
-        <div className="flex justify-center mt-24">
+        <div className="flex justify-center mt-36">
           <LoadingWheel />
         </div>
       ) : (
         <>
-          <h1 className="text-3xl font-semibold mb-10">
-            Your short URLs
-          </h1>
-          <Table urlsList={urlsList} />
+          <Table urlsList={urlsList} open={open} setOpen={setOpen} setCurrentLongUrl={setCurrentLongUrl} />
+          <SlideOver open={open} setOpen={setOpen} currentLongUrl={currentLongUrl} setCurrentLongUrl={setCurrentLongUrl} />
         </>
       )}
         </Layout>
