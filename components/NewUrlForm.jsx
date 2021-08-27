@@ -5,10 +5,16 @@ import LoadingWheel from "./LoadingWheel";
 import SignIn from "../components/Auth";
 import Link from 'next/link'
 
-function NewUrlForm({ longUrl, setLongUrl, generateRandomString }) {
+function NewUrlForm() {
   const [urlsList, setUrlsList] = useState([])
   const [session, setSession] = useState(null)
   const [loading, setLoading] = useState(true)
+
+  const [longUrl, setLongUrl] = useState()
+
+  const generateRandomString =() => {
+    return Math.random().toString(26).substring(2, 8);
+  }
 
   // Loading delay
   useEffect(() => {
@@ -21,7 +27,6 @@ function NewUrlForm({ longUrl, setLongUrl, generateRandomString }) {
   useEffect(() => {
     setSession(supabase.auth.session())
     const user = supabase.auth.user()
-    console.log('user', user)
     axios
       .get('/api/urls', {
         params: {
@@ -29,13 +34,35 @@ function NewUrlForm({ longUrl, setLongUrl, generateRandomString }) {
         }
       })
       .then(function (response) {
-        console.log("URL response: ", response.data.data)
         setUrlsList(response.data.data)
         setLoading(false)
       })
   }, [])
 
-  console.log("urlsList", urlsList)
+  function handleSubmit (event) {
+    event.preventDefault()
+    setLoading(true)
+
+    const user = supabase.auth.user()
+    const randomString = generateRandomString()
+
+    axios.post('/api/urls', {
+        randomString,
+        longUrl,
+        userId: user.id,
+      })
+      .then(function (response) {
+        console.log("URL POST response: ", response)
+        setLoading(false)
+      })
+      .catch(function (error) {
+        console.log(error)
+        setLoading(false)
+      })
+      .finally(function () {
+        setLoading(false)
+      })
+  }
 
   return (
     <>
@@ -54,8 +81,8 @@ function NewUrlForm({ longUrl, setLongUrl, generateRandomString }) {
             <div className="">
               <input
                 type="text"
-                name="first-name"
-                id="first-name"
+                name="longUrl"
+                id="longUrl"
                 className="max-w-lg block w-full shadow-sm focus:ring-green-500 focus:border-green-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                 onChange={(e) => setLongUrl(e.target.value)}
               />
@@ -72,29 +99,13 @@ function NewUrlForm({ longUrl, setLongUrl, generateRandomString }) {
               <button
                 type="submit"
                 className="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                onClick={(event) => handleSubmit(event)}
               >
                 Save
               </button>
             </div>
           </div>
         </form>
-
-          {urlsList.map((row, index) => (
-            <div key={index}>
-              <Link href={`http://localhost:3000/urls/${row['short_url']}`}>
-              <a>
-                {`http://localhost:3000/urls/${row['short_url']}`}
-              </a>
-              </Link>
-              <p>
-                {row.long_url}
-              </p>
-              <p>
-                {row.short_url}
-              </p>
-            </div>
-          ))}
-
         </>
       )}
     </>
