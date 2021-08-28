@@ -4,11 +4,27 @@ import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import Link from 'next/link'
 import { supabase } from "../../utils/supabaseClient";
 
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-const navItems = [
+const signedOutNavItems = [
+  {
+    name: 'Home',
+    href: '/',
+  },
+  {
+    name: 'Features',
+    href: '/features',
+  },
+  {
+    name: 'Pricing',
+    href: '/pricing',
+  },
+]
+
+const signedInNavItems = [
     {
     name: 'Home',
     href: '/',
@@ -27,9 +43,12 @@ const handleSignOut = () => {
   supabase.auth.signOut()
 }
 
-export default function Navigation({ currentUrl }) {
+export default function Navigation({ currentUrl, session }) {
+  let navItems;
+  session ? navItems = signedInNavItems : navItems = signedOutNavItems;
+
   return (
-    <Disclosure as="nav" className="bg-white shadow">
+    <Disclosure as="nav" className="bg-white">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -63,7 +82,10 @@ export default function Navigation({ currentUrl }) {
                   <span className="sr-only">View notifications</span>
                 </button>
 
-                {/* Profile dropdown */}
+
+                {
+                  session ?
+                 // Profile dropdown
                 <Menu as="div" className="ml-3 relative">
                   <div>
                     <Menu.Button className="bg-white rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
@@ -116,6 +138,18 @@ export default function Navigation({ currentUrl }) {
                     </Menu.Items>
                   </Transition>
                 </Menu>
+                    : (
+                      <>
+                        <Link href="/signin">
+                          <a>Sign in</a>
+                        </Link>
+                        <Link href="/signup">
+                          <a>Sign up</a>
+                        </Link>
+                      </>
+                    )
+
+                }
               </div>
             </div>
           </div>

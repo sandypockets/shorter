@@ -11,8 +11,16 @@ export default function Layout({ children }) {
     website: null,
     avatar_url: null,
   })
+  const [session, setSession] = useState(null)
   const router = useRouter()
   const currentUrl = router.asPath
+
+  useEffect(() => {
+    setSession(supabase.auth.session())
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session)
+    })
+  }, [])
 
   useEffect(() => {
   let responseData;
@@ -41,7 +49,7 @@ export default function Layout({ children }) {
 
   return (
     <div className="h-screen">
-      <Navigation username={userData.username} currentUrl={currentUrl} />
+      <Navigation username={userData.username} currentUrl={currentUrl} session={session} />
       <div>
         {children}
       </div>
