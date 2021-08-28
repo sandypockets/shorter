@@ -16,7 +16,7 @@ export default function Index() {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false)
-    }, 800)
+    }, 300)
   }, [session])
 
   useEffect(() => {
@@ -29,16 +29,7 @@ export default function Index() {
   return (
     <>
       <Layout>
-        {loading ? (
-          <Container>
-            <div className="flex justify-center">
-              <LoadingWheel />
-            </div>
-          </Container>
-          ) :
-          !session ? <SignIn /> : (
-            <HomePage />
-        )}
+          <HomePage />
       </Layout>
     </>
   )
