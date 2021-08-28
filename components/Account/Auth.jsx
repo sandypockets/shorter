@@ -42,7 +42,7 @@ export default function Auth({ registrationType }) {
                   Or{' '}
                   <Link href={"/signup"}>
                     <a className="font-medium text-green-600 hover:text-green-500">
-                      start your 14-day free trial
+                      sign up for free.
                     </a>
                   </Link>
                 </p>
@@ -51,7 +51,7 @@ export default function Auth({ registrationType }) {
 
             {content === 'signup' && (
               <>
-                <h2 className="mt-6 text-3xl font-extrabold text-gray-900">Start your free trial</h2>
+                <h2 className="mt-6 text-3xl font-extrabold text-gray-900">Create your account</h2>
                 <p className="mt-2 text-sm text-gray-600">
                   Already have an account?{' '}
                   <Link href={"/signin"}>
