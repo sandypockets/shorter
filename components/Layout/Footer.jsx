@@ -26,7 +26,7 @@ export default function Footer() {
             </div>
           ))}
         </nav>
-        <p className="mt-8 text-center text-base text-gray-400">&copy; {new Date().getFullYear()} Shortn, Inc. All rights reserved.</p>
+        <p className="mt-8 text-center text-base text-gray-400">&copy; {new Date().getFullYear()} Shorter, Inc. All rights reserved.</p>
       </div>
     </footer>
   )

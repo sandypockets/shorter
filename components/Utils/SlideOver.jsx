@@ -26,7 +26,9 @@ export default function SlideOver({ open, setOpen, urlId, shortUrl, currentLongU
                     <div className="h-full flex flex-col py-6 bg-white shadow-xl overflow-y-scroll">
                       <div className="px-4 sm:px-6">
                         <div className="flex items-start justify-between">
-                          <Dialog.Title className="text-lg font-medium text-gray-900">Panel title</Dialog.Title>
+                          <Dialog.Title className="text-lg font-medium text-gray-900">
+                            Edit URL
+                          </Dialog.Title>
                           <div className="ml-3 h-7 flex items-center">
                             <button
                               type="button"

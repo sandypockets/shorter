@@ -68,7 +68,7 @@ export default function Table(
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-600">
                     <Link href={`/urls/${url['short_url']}`}>
                       <a className="hover:text-gray-800">
-                        {`shortn.app/urls/${url['short_url']}`}
+                        {`shorter.one/urls/${url['short_url']}`}
                       </a>
                   </Link>
                   </td>
