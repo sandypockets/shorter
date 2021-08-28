@@ -51,22 +51,22 @@ export default function YourUrls() {
     <>
         <Layout>
           <Container>
-            <h1 className="text-3xl font-semibold mb-10">
-              Your short URLs
-            </h1>
-        {loading ? (
-          <div className="flex justify-center mt-36">
-            <LoadingWheel />
-          </div>
-        ) : (
-          <>
-            <Table setShowModal={setShowModal} urlsList={urlsList} setUrlId={setUrlId} open={open} setOpen={setOpen} setShortUrl={setShortUrl} setCurrentLongUrl={setCurrentLongUrl} />
-            <SlideOver setEditedUrl={setEditedUrl} urlId={urlId} open={open} setOpen={setOpen} shortUrl={shortUrl} currentLongUrl={currentLongUrl} setCurrentLongUrl={setCurrentLongUrl} />
-            {showModal && (
-              <Modal showModal={showModal} setShowModal={setShowModal} />
+            {loading ? (
+              <div className="flex justify-center">
+                <LoadingWheel />
+              </div>
+            ) : (
+              <>
+                <h1 className="text-3xl font-semibold mb-10">
+                  Your short URLs
+                </h1>
+                <Table setShowModal={setShowModal} urlsList={urlsList} setUrlId={setUrlId} open={open} setOpen={setOpen} setShortUrl={setShortUrl} setCurrentLongUrl={setCurrentLongUrl} />
+                <SlideOver setEditedUrl={setEditedUrl} urlId={urlId} open={open} setOpen={setOpen} shortUrl={shortUrl} currentLongUrl={currentLongUrl} setCurrentLongUrl={setCurrentLongUrl} />
+                {showModal && (
+                  <Modal showModal={showModal} setShowModal={setShowModal} />
+                )}
+              </>
             )}
-          </>
-        )}
           </Container>
         </Layout>
     </>

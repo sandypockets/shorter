@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import HomePage from "../components/HomePage";
 import Layout from '../components/Layout/Layout'
 import LoadingWheel from "../components/Utils/LoadingWheel";
+import Container from "../components/Layout/Container";
 
 export default function Index() {
   const [session, setSession] = useState(null)
@@ -27,16 +28,18 @@ export default function Index() {
 
   return (
     <>
-      {loading ? (
-        <div className="flex justify-center mt-24">
-          <LoadingWheel />
-        </div>
-        ) :
-        !session ? <SignIn /> : (
-        <Layout>
-          <HomePage />
-        </Layout>
-      )}
+      <Layout>
+        {loading ? (
+          <Container>
+            <div className="flex justify-center">
+              <LoadingWheel />
+            </div>
+          </Container>
+          ) :
+          !session ? <SignIn /> : (
+            <HomePage />
+        )}
+      </Layout>
     </>
   )
 }

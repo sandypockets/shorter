@@ -40,7 +40,7 @@ export default function Layout({ children }) {
   }, [])
 
   return (
-    <div>
+    <div className="h-screen">
       <Navigation username={userData.username} currentUrl={currentUrl} />
       <div>
         {children}
