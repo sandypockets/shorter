@@ -39,8 +39,8 @@ export default function FeatureList() {
   return (
     <div className="bg-white">
       <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-24 lg:px-8">
-        <div className="max-w-3xl mb-5 lg:mb-0 lg:max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900">The only link shortener you'll ever need</h2>
+        <div className="max-w-3xl lg:max-w-4xl mb-5 lg:mb-0 mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl lg:text-6xl font-extrabold text-gray-900">The only link shortener you'll ever need</h2>
           <p className="mt-4 text-lg text-gray-500">
             Features and plans, tailored to content creators and startups.
           </p>
