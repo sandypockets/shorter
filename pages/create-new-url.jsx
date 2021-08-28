@@ -21,7 +21,7 @@ export default function CreateNewUrl() {
     setLoading(true)
     setTimeout(() => {
       setLoading(false)
-    }, 900)
+    }, 300)
   }, [session])
 
   function handleSubmit (event) {
