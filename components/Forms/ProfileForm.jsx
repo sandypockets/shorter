@@ -1,6 +1,9 @@
 import Avatar from "../Account/Avatar";
+import {useState} from "react";
 
 export default function ProfileForm({ userData, setUserData, loading, updateProfile }) {
+  const [imageBlob, setImageBlob] = useState(null)
+
   return (
     <form className="space-y-8 divide-y divide-gray-200">
       <div className="space-y-8 divide-y divide-gray-200">
@@ -38,11 +41,14 @@ export default function ProfileForm({ userData, setUserData, loading, updateProf
                 url={userData['avatar_url']}
                 size={150}
                 onUpload={(url) => {
-                  setUserData(prev => ({ ...prev, "avatar_url": url }))
-                  updateProfile({ userData })
+                  // setUserData(prev => ({ ...prev, "avatar_url": url }))
+                  // updateProfile()
                 }}
                 userData={userData}
                 setUserData={setUserData}
+                imageBlob={imageBlob}
+                setImageBlob={setImageBlob}
+                updateProfile={updateProfile}
               />
             </div>
 

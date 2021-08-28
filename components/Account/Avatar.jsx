@@ -3,7 +3,7 @@ import { supabase } from '../../utils/supabaseClient'
 import EmptyAvatar from "./EmptyAvatar";
 import AvatarLoading from "./AvatarLoading";
 
-export default function Avatar({ url, size, onUpload, userData, setUserData }) {
+export default function Avatar({ url, size, onUpload, userData, setUserData, imageBlob, setImageBlob, updateProfile }) {
   const [avatarUrl, setAvatarUrl] = useState(null)
   const [uploading, setUploading] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -20,7 +20,8 @@ export default function Avatar({ url, size, onUpload, userData, setUserData }) {
         throw error
       }
       const url = URL.createObjectURL(data)
-      setUserData(prev => ({ ...prev, "avatar_url": url }))
+      // setUserData(prev => ({ ...prev, "avatar_url": url }))
+      setImageBlob(url)
 
     } catch (error) {
       console.log('Error downloading image: ', error.message)
@@ -52,6 +53,8 @@ export default function Avatar({ url, size, onUpload, userData, setUserData }) {
       }
 
       onUpload(filePath)
+      setUserData(prev => ({ ...prev, "avatar_url": filePath }))
+      updateProfile()
     } catch (error) {
       alert(error.message)
     } finally {
@@ -68,7 +71,7 @@ export default function Avatar({ url, size, onUpload, userData, setUserData }) {
           {userData['avatar_url'] ? (
             <div className="flex">
               <img
-                src={userData['avatar_url']}
+                src={imageBlob}
                 alt="Avatar"
                 className="rounded-lg"
                 height={size}
