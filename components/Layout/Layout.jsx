@@ -49,7 +49,7 @@ export default function Layout({ children }) {
 
   return (
     <div className="h-screen">
-      <Navigation username={userData.username} currentUrl={currentUrl} session={session} />
+      <Navigation userData={userData} setUserData={setUserData} url={userData['avatar_url']} currentUrl={currentUrl} session={session} />
       <div>
         {children}
       </div>
