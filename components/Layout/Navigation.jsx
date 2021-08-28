@@ -88,7 +88,7 @@ export default function Navigation({ currentUrl }) {
                       <Menu.Item>
                         {({ active }) => (
                           <Link href="/account">
-                            <a className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}>
+                            <a className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700')}>
                               Your Profile
                             </a>
                           </Link>
@@ -97,7 +97,7 @@ export default function Navigation({ currentUrl }) {
                       <Menu.Item>
                         {({ active }) => (
                           <Link href="/settings">
-                            <a className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}>
+                            <a className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700 cursor-pointer hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700')}>
                               Settings
                             </a>
                           </Link>
@@ -107,7 +107,7 @@ export default function Navigation({ currentUrl }) {
                         {({ active }) => (
                           <a
                             onClick={handleSignOut}
-                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                            className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700 cursor-pointer')}
                           >
                             Sign out
                           </a>
