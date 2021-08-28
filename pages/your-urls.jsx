@@ -7,6 +7,7 @@ import Table from "../components/Utils/Table";
 import LoadingWheel from "../components/Utils/LoadingWheel";
 import SlideOver from "../components/Utils/SlideOver";
 import Modal from "../components/Utils/Modal";
+import Container from "../components/Layout/Container";
 
 export default function YourUrls() {
   const [urlsList, setUrlsList] = useState([])
@@ -49,22 +50,24 @@ export default function YourUrls() {
   return (
     <>
         <Layout>
-          <h1 className="text-3xl font-semibold mb-10">
-            Your short URLs
-          </h1>
-      {loading ? (
-        <div className="flex justify-center mt-36">
-          <LoadingWheel />
-        </div>
-      ) : (
-        <>
-          <Table setShowModal={setShowModal} urlsList={urlsList} setUrlId={setUrlId} open={open} setOpen={setOpen} setShortUrl={setShortUrl} setCurrentLongUrl={setCurrentLongUrl} />
-          <SlideOver setEditedUrl={setEditedUrl} urlId={urlId} open={open} setOpen={setOpen} shortUrl={shortUrl} currentLongUrl={currentLongUrl} setCurrentLongUrl={setCurrentLongUrl} />
-          {showModal && (
-            <Modal showModal={showModal} setShowModal={setShowModal} />
-          )}
-        </>
-      )}
+          <Container>
+            <h1 className="text-3xl font-semibold mb-10">
+              Your short URLs
+            </h1>
+        {loading ? (
+          <div className="flex justify-center mt-36">
+            <LoadingWheel />
+          </div>
+        ) : (
+          <>
+            <Table setShowModal={setShowModal} urlsList={urlsList} setUrlId={setUrlId} open={open} setOpen={setOpen} setShortUrl={setShortUrl} setCurrentLongUrl={setCurrentLongUrl} />
+            <SlideOver setEditedUrl={setEditedUrl} urlId={urlId} open={open} setOpen={setOpen} shortUrl={shortUrl} currentLongUrl={currentLongUrl} setCurrentLongUrl={setCurrentLongUrl} />
+            {showModal && (
+              <Modal showModal={showModal} setShowModal={setShowModal} />
+            )}
+          </>
+        )}
+          </Container>
         </Layout>
     </>
   )
