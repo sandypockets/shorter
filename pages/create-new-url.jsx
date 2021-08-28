@@ -62,7 +62,7 @@ export default function CreateNewUrl() {
           ) :
           !session ? <SignIn /> : (
             <>
-              <h1 className="text-3xl font-semibold mb-10">
+              <h1 className="text-4xl mb-10 tracking-tight font-extrabold flex justify-center">
                 Create a new URL
               </h1>
               <div className="flex justify-center">

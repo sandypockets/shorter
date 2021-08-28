@@ -57,7 +57,7 @@ export default function YourUrls() {
               </div>
             ) : (
               <>
-                <h1 className="text-3xl font-semibold mb-10">
+                <h1 className="text-4xl mb-10 tracking-tight font-extrabold flex justify-center">
                   Your short URLs
                 </h1>
                 <Table setShowModal={setShowModal} urlsList={urlsList} setUrlId={setUrlId} open={open} setOpen={setOpen} setShortUrl={setShortUrl} setCurrentLongUrl={setCurrentLongUrl} />
