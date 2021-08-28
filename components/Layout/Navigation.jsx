@@ -169,14 +169,14 @@ export default function Navigation({ currentUrl, session, url, userData, setUser
                   <>
                     <Link href="/signin">
                       <a
-                        className={"h-16 border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"}
+                        className={"h-16 px-2 border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"}
                       >
                         Sign in
                       </a>
                     </Link>
                     <Link href="/signup">
                       <a
-                        className={"h-16 border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"}
+                        className={"h-16 px-2 border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"}
                       >
                         Sign up
                       </a>
