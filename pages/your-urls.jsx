@@ -8,6 +8,7 @@ import LoadingWheel from "../components/Utils/LoadingWheel";
 import SlideOver from "../components/Utils/SlideOver";
 import Modal from "../components/Utils/Modal";
 import Container from "../components/Layout/Container";
+import SignIn from "../components/Account/Auth";
 
 export default function YourUrls() {
   const [urlsList, setUrlsList] = useState([])
@@ -33,17 +34,21 @@ export default function YourUrls() {
   useEffect(() => {
     setSession(supabase.auth.session())
     const user = supabase.auth.user()
-    axios
-      .get('/api/urls', {
-        params: {
-          id: user.id
-        }
-      })
-      .then(function (response) {
-        console.log("URL response: ", response.data.data)
-        setUrlsList(response.data.data)
-        setLoading(false)
-      })
+    if (user) {
+
+      axios
+        .get('/api/urls', {
+          params: {
+            id: user.id
+          }
+        })
+        .then(function (response) {
+          console.log("URL response: ", response.data.data)
+          setUrlsList(response.data.data)
+          setLoading(false)
+        })
+
+    }
   }, [editedUrl])
 
 
@@ -55,7 +60,8 @@ export default function YourUrls() {
               <div className="flex justify-center">
                 <LoadingWheel />
               </div>
-            ) : (
+            ) : !session ? <SignIn /> :
+              (
               <>
                 <h1 className="text-4xl mb-10 tracking-tight font-extrabold flex justify-center">
                   Your short URLs
