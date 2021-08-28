@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import {Fragment, useEffect} from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import Link from 'next/link'
@@ -43,9 +43,28 @@ const handleSignOut = () => {
   supabase.auth.signOut()
 }
 
-export default function Navigation({ currentUrl, session }) {
+export default function Navigation({ currentUrl, session, url, userData, setUserData }) {
   let navItems;
   session ? navItems = signedInNavItems : navItems = signedOutNavItems;
+
+
+  useEffect(() => {
+   userData['avatar_url'] && downloadImage(userData['avatar_url'])
+  }, [userData['avatar_url']])
+
+  async function downloadImage(path) {
+    try {
+      const { data, error } = await supabase.storage.from('avatars').download(path)
+      if (error) {
+        throw error
+      }
+      const url = URL.createObjectURL(data)
+      setUserData(prev => ({ ...prev, "avatar_url": url }))
+
+    } catch (error) {
+      console.log('Error downloading image: ', error.message)
+    }
+  }
 
   return (
     <Disclosure as="nav" className="bg-white">
@@ -92,7 +111,8 @@ export default function Navigation({ currentUrl, session }) {
                       <span className="sr-only">Open user menu</span>
                       <img
                         className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        // src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        src={userData['avatar_url']}
                         alt=""
                       />
                     </Menu.Button>

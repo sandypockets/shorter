@@ -66,11 +66,13 @@ export default function Avatar({ url, size, onUpload, userData, setUserData }) {
       ) : (
         <div className="flex">
           {userData['avatar_url'] ? (
-            <div className="flex rounded-full w-20 h-20">
+            <div className="flex">
               <img
                 src={userData['avatar_url']}
                 alt="Avatar"
-                className="rounded-full"
+                className="rounded-lg"
+                height={size}
+                width={size}
               />
               <div className="flex flex-col justify-center ml-10">
                 <label className="py-2 px-4 rounded-lg text-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 " htmlFor="single">
@@ -91,7 +93,7 @@ export default function Avatar({ url, size, onUpload, userData, setUserData }) {
               <EmptyAvatar />
               <div className="flex flex-col justify-center ml-10">
                 <label className="py-2 px-4 rounded-lg text-sm text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 " htmlFor="single">
-                  {uploading ? 'Uploading ...' : 'Upload'}
+                  {uploading ? 'Uploading...' : 'Upload'}
                 </label>
                 <input
                   className="hidden absolute"
