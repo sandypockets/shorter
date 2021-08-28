@@ -1,10 +1,11 @@
-import Header from "./Header";
-import FeatureList from "./FeatureList";
+import Faq from "./Faq";
+import Hero from "./Hero";
 
 export default function HomePage() {
   return (
     <div>
-      <Header />
+      <Hero />
+      <Faq />
     </div>
   )
 }
