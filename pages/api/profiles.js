@@ -21,7 +21,7 @@ async function getProfile(req, res) {
 }
 
 async function updateProfile(req, res) {
-  const { id, username, email, website, avatar_url } = req.body
+  const { id, username, email, website, avatar_url, first_name, last_name } = req.body
   try {
     const updates = {
       id,
@@ -29,6 +29,8 @@ async function updateProfile(req, res) {
       email,
       website,
       avatar_url,
+      first_name,
+      last_name,
       updated_at: new Date(),
     }
     let { error } = await supabase.from('profiles').upsert(updates, {
