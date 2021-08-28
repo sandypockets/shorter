@@ -3,6 +3,8 @@ import { supabase } from '../../utils/supabaseClient'
 import axios from 'axios'
 import AccountForm from "../Forms/AccountForm";
 import ProfileForm from "../Forms/ProfileForm";
+import LoadingWheel from "../Utils/LoadingWheel";
+import Container from "../Layout/Container";
 
 function Account() {
   const [loading, setLoading] = useState(false)
@@ -17,6 +19,13 @@ function Account() {
     last_name: null,
   })
 
+  // Loading delay
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false)
+    }, 300)
+  }, [session])
+
   useEffect(() => {
     setSession(supabase.auth.session())
     supabase.auth.onAuthStateChange((_event, session) => {
@@ -26,6 +35,7 @@ function Account() {
 
   useEffect(() => {
     if (user) {
+      setLoading(true)
       axios
         .get('/api/profiles', {
           params: {
@@ -44,6 +54,9 @@ function Account() {
         })
         .catch(function (error) {
           console.log(error);
+        })
+        .finally(function () {
+          setLoading(false)
         })
     }
   }, [])
@@ -71,12 +84,22 @@ function Account() {
 
   return (
     <>
-    {user && (
-      <div className="max-w-3xl mx-auto">
-        <ProfileForm userData={userData} setUserData={setUserData} loading={loading} updateProfile={updateProfile} />
-        {/*<AccountForm userData={userData} setUserData={setUserData} loading={loading} updateProfile={updateProfile} />*/}
-      </div>
-    )}
+      {loading ? (
+        <div className="flex justify-center">
+          <LoadingWheel />
+        </div>
+      ) : user ? (
+          <div className="max-w-3xl mx-auto">
+            <ProfileForm userData={userData} setUserData={setUserData} loading={loading} updateProfile={updateProfile} />
+            {/*<AccountForm userData={userData} setUserData={setUserData} loading={loading} updateProfile={updateProfile} />*/}
+          </div>
+        ) : (
+          <Container>
+            <h2 className="flex justify-center text-2xl mt-24 h-72">
+              You must be signed in to view this page
+            </h2>
+          </Container>
+      )}
 
     </>
   )
