@@ -11,10 +11,6 @@ function classNames(...classes) {
 
 const signedOutNavItems = [
   {
-    name: 'Home',
-    href: '/',
-  },
-  {
     name: 'Features',
     href: '/features',
   },
@@ -25,10 +21,6 @@ const signedOutNavItems = [
 ]
 
 const signedInNavItems = [
-    {
-    name: 'Home',
-    href: '/',
-  },
   {
     name: 'Create new URL',
     href: '/create-new-url',
@@ -88,6 +80,15 @@ export default function Navigation({ currentUrl, session, url, userData, setUser
                 </Disclosure.Button>
               </div>
               <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+                <div className={"hidden sm:ml-6 sm:flex sm:space-x-8"}>
+                  <Link href={'/'}>
+                    <a
+                      className={"border-transparent text-green-600 hover:border-green-300 hover:text-green-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"}
+                    >
+                      Shorter
+                    </a>
+                  </Link>
+                </div>
                 {navItems.map((item, index) => (
                 <div key={index} className={"hidden sm:ml-6 sm:flex sm:space-x-8"}>
                   <Link href={item.href}>
