@@ -6,8 +6,6 @@ const navigation = {
     { name: 'About', href: '/about' },
     { name: 'Pricing', href: '/pricing' },
     { name: 'Features', href: '/features' },
-    { name: 'Create short link', href: '/create-new-url' },
-    { name: 'My short links', href: 'your-urls' },
   ],
 }
 
