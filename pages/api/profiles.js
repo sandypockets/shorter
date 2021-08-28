@@ -21,11 +21,12 @@ async function getProfile(req, res) {
 }
 
 async function updateProfile(req, res) {
-  const { id, username, website, avatar_url } = req.body
+  const { id, username, email, website, avatar_url } = req.body
   try {
     const updates = {
       id,
       username,
+      email,
       website,
       avatar_url,
       updated_at: new Date(),
