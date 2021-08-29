@@ -3,6 +3,7 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import Link from 'next/link'
 import { supabase } from "../../utils/supabaseClient";
+import { useRouter } from 'next/router'
 
 
 function classNames(...classes) {
@@ -31,16 +32,19 @@ const signedInNavItems = [
   },
 ]
 
-const handleSignOut = () => {
-  supabase.auth.signOut()
-}
+
 
 export default function Navigation({ currentUrl, session, url, userData, setUserData }) {
   let navItems;
   session ? navItems = signedInNavItems : navItems = signedOutNavItems;
 
   const [loading, setLoading] = useState(true)
+  const router = useRouter();
 
+  const handleSignOut = () => {
+    supabase.auth.signOut()
+    router.push('/')
+  }
 
   useEffect(() => {
    userData['avatar_url'] && downloadImage(userData['avatar_url'])
