@@ -13,7 +13,7 @@ const faqs = [
     question: "Can I still use Shorter?",
     answer:
       <>
-        Yes. But there are no guarantees that Shorter its URLs will live forever.
+        Yes. But there are no guarantees that Shorter or its URLs will live forever.
       </>
   },
   {
