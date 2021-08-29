@@ -5,7 +5,7 @@ export default function ProfileForm({ userData, setUserData, loading, updateProf
   const [imageBlob, setImageBlob] = useState(null)
 
   return (
-    <form className="space-y-8 divide-y divide-gray-200">
+    <form className="space-y-8 divide-y divide-gray-200 mx-6">
       <div className="space-y-8 divide-y divide-gray-200">
         <div>
 
