@@ -22,6 +22,8 @@ export default function YourUrls() {
 
   const [editedUrl, setEditedUrl] = useState(null)
   const [showModal, setShowModal] = useState(false)
+  const [isDeleted, setIsDeleted] = useState(false)
+  const [deleteLoading, setDeleteLoading] = useState(false)
 
   // Loading delay
   useEffect(() => {
@@ -49,7 +51,30 @@ export default function YourUrls() {
         })
 
     }
-  }, [editedUrl])
+  }, [editedUrl, isDeleted])
+
+
+  const deleteUrl = (shortUrl) => {
+    const user = supabase.auth.user()
+    if (user) {
+      setDeleteLoading(true)
+      axios.post('/api/delete', {
+        urlId: shortUrl,
+        userId: user.id,
+      })
+        .then(function (response) {
+          console.log("URL DELETE response: ", response)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+        .finally(function () {
+          isDeleted ? setIsDeleted(false) : setIsDeleted(true)
+          setShowModal(false)
+          setDeleteLoading(false)
+        })
+    }
+  }
 
 
   return (
@@ -66,10 +91,10 @@ export default function YourUrls() {
                 <h1 className="text-4xl mb-10 tracking-tight font-extrabold flex justify-center">
                   Your short URLs
                 </h1>
-                <Table setShowModal={setShowModal} urlsList={urlsList} setUrlId={setUrlId} open={open} setOpen={setOpen} setShortUrl={setShortUrl} setCurrentLongUrl={setCurrentLongUrl} />
+                <Table setShowModal={setShowModal} urlsList={urlsList} urlId={urlId} setUrlId={setUrlId} open={open} setOpen={setOpen} setShortUrl={setShortUrl} setCurrentLongUrl={setCurrentLongUrl} />
                 <SlideOver setEditedUrl={setEditedUrl} urlId={urlId} open={open} setOpen={setOpen} shortUrl={shortUrl} currentLongUrl={currentLongUrl} setCurrentLongUrl={setCurrentLongUrl} />
                 {showModal && (
-                  <Modal showModal={showModal} setShowModal={setShowModal} />
+                  <Modal deleteLoading={deleteLoading} deleteUrl={deleteUrl} showModal={showModal} setShowModal={setShowModal} urlId={urlId} setUrlId={setUrlId} />
                 )}
               </>
             )}

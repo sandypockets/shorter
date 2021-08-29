@@ -2,11 +2,12 @@ import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { ExclamationIcon, XIcon } from '@heroicons/react/outline'
 
-export default function Modal({ showModal, setShowModal }) {
+export default function Modal({ showModal, setShowModal, urlId, setUrlId, deleteUrl, deleteLoading }) {
 
   const handleCloseModal = () => {
     setShowModal(false)
   }
+
 
   return (
     <Transition.Root show={showModal} as={Fragment}>
@@ -67,9 +68,9 @@ export default function Modal({ showModal, setShowModal }) {
                 <button
                   type="button"
                   className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
-                  onClick={handleCloseModal}
+                  onClick={() => deleteUrl(urlId)}
                 >
-                  Delete
+                  {deleteLoading ? "Loading..." : "Delete"}
                 </button>
                 <button
                   type="button"
