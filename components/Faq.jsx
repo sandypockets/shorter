@@ -41,7 +41,7 @@ const faqs = [
     question: "Can I see the source code?",
     answer:
       <>
-        Yes. It's on <a>GitHub</a>
+        Yes. It's on <a href="https://github.com/sandypockets/shorter">GitHub</a>
       </>
   },
 ]
