@@ -63,7 +63,7 @@ export default function Navigation({ currentUrl, session, url, userData, setUser
   }
 
   return (
-    <Disclosure as="nav" className="bg-white fixed w-screen top-0 z-20">
+    <Disclosure as="nav" className="bg-white fixed w-screen top-0 z-20 shadow">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
