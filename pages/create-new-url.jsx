@@ -60,7 +60,7 @@ export default function CreateNewUrl() {
               <LoadingWheel />
             </div>
           ) :
-          !session ? <SignIn /> : (
+          !session ? <SignIn registrationType={'signin'} /> : (
             <>
               <h1 className="text-4xl mb-10 tracking-tight font-extrabold flex justify-center">
                 Create a new URL
