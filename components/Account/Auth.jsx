@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import { useState } from "react";
 import { supabase } from "../../utils/supabaseClient";
 import Link from 'next/link'
 
@@ -7,14 +7,14 @@ export default function Auth({ registrationType }) {
   const [email, setEmail] = useState('')
   const [content, setContent] = useState('signup')
 
-  useEffect(() => {
-    if (registrationType === 'signup') {
-      setContent('signup')
-    }
-    if (registrationType === 'signin') {
-      setContent('signin')
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (registrationType === 'signup') {
+  //     setContent('signup')
+  //   }
+  //   if (registrationType === 'signin') {
+  //     setContent('signin')
+  //   }
+  // }, [])
 
 
   const handleLogin = async (email) => {
@@ -35,7 +35,7 @@ export default function Auth({ registrationType }) {
       <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
         <div className="mx-auto w-full max-w-sm lg:w-96">
           <div>
-            {content === 'signin' && (
+            {registrationType === 'signin' && (
               <>
                 <h2 className="mt-6 text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
                 <p className="mt-2 text-sm text-gray-600">
@@ -49,7 +49,7 @@ export default function Auth({ registrationType }) {
               </>
             )}
 
-            {content === 'signup' && (
+            {registrationType === 'signup' && (
               <>
                 <h2 className="mt-6 text-3xl font-extrabold text-gray-900">Create your account</h2>
                 <p className="mt-2 text-sm text-gray-600">
@@ -95,7 +95,7 @@ export default function Auth({ registrationType }) {
                     }}
                     disabled={loading}
                   >
-                    {content === 'signin' ? "Sign in" : "Sign up"}
+                    {registrationType === 'signin' ? "Sign in" : "Sign up"}
                   </button>
                 </div>
               </form>
