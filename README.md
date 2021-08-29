@@ -1,109 +1,17 @@
-# Shortn
-Shortn is a simple URL shortener. 
-
----
-
-# Next.js, Tailwind CSS, Supabase, and Storybook
-A quick start template for full stack projects with Next.js, Tailwind CSS, Supabase, and Storybook.
-
-# Get Started
-Storybook has built-in TypeScript support, but Next.js requires [some configuration](https://nextjs.org/docs/basic-features/typescript#existing-projects). . If you want to customize the default configuration, refer to the [TypeScript docs](https://storybook.js.org/docs/react/configure/typescript).
-
-Developed and tested with `Node 14`. Packages managed with `yarn`.  
-
-## Set up Supabase
-First, login or sign up to [Supabase](https://supabase.io/), and start a new project. For this template to work out of the box, you need to create a `profiles` table for your users. 
-
-From within your project in Supabase:
-
-1. Go to `SQL` in the side menu.
-2. Click `+ New query`.
-3. Paste the following SQL into the text area, then click `Run`. If successful, you should see a message that states there were no rows returned.
-
-```sql
--- Create a table for public "profiles"
-create table profiles (
-  id uuid references auth.users not null,
-  updated_at timestamp with time zone,
-  username text unique,
-  avatar_url text,
-  website text,
-
-  primary key (id),
-  unique(username),
-  constraint username_length check (char_length(username) >= 3)
-);
-
-alter table profiles enable row level security;
-
-create policy "Public profiles are viewable by everyone."
-  on profiles for select
-  using ( true );
-
-create policy "Users can insert their own profile."
-  on profiles for insert
-  with check ( auth.uid() = id );
-
-create policy "Users can update own profile."
-  on profiles for update
-  using ( auth.uid() = id );
-
--- Set up Realtime!
-begin;
-  drop publication if exists supabase_realtime;
-  create publication supabase_realtime;
-commit;
-alter publication supabase_realtime add table profiles;
-
--- Set up Storage!
-insert into storage.buckets (id, name)
-values ('avatars', 'avatars');
-
-create policy "Avatar images are publicly accessible."
-  on storage.objects for select
-  using ( bucket_id = 'avatars' );
-
-create policy "Anyone can upload an avatar."
-  on storage.objects for insert
-  with check ( bucket_id = 'avatars' );
-```
-
-The above query will create a relational table, connecting the profile the user creates to the user's `uuid` in Supabase. In this starter template, users edit their profile information in the `<Account/>` component.
-
-## Set up this template
-1. Click `Use this template`.
-2. Install dependencies with `yarn install`
-3. Create a new file, `.env.local`
-4. Copy the contents of `.env.example` into `.env.local`
-5. Login to Supabase, and replace the placeholders in the `.env.local` with your real Supabase project information. You can find it in Supabase by clicking **Settings > API**.
-6. Start the Next development server.
-```shell
-yarn dev
-```
-7. Visit [`http://localhost:3000/`](http://localhost:3000/) in your browser. 
-
-## Testing
-Components can be developed in isolation using Storybook. This template comes with Storybook 6.3.0
-
-### Use Storybook
-To start the Storybook development server, run:
-```bash
-yarn storybook
-```
-If a new browser tab doesn't open automatically, then visit [`http://localhost:6006/`](http://localhost:6006/) in your browser. 
-
-### Build Static Storybook
-If you want to deploy a static version of Storybook, you first need to build it. Run:
-```bash
-yarn build-storybook
-```
-If you're deploying to Vercel, specify `storybook-static` as the output directory.
+# Shorter
+Shorter is a simple URL shortener, built with Next.js, React, Tailwind CSS, and Supabase.
 
 ## Dependencies
 * Next 11.01
 * React 17.0.2
 * React-DOM 17.0.2
 * supabase/supabase-js 1.21.0
+* axios 0.21.1
+* @headlessui/react 1.4.0
+* @heroicons/react 1.0.3
+* @supabase/supabase-js 1.21.0
+* @tailwindcss/forms 0.3.3
+* @tailwindcss/typography 0.4.1
 
 ## Dev Dependencies
 * storybook/addon-essentials 6.3.0
