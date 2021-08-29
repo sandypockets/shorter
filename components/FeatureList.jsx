@@ -23,7 +23,7 @@ const features = [
   },
   {
     name: 'No expiry',
-    description: "Shorter links never expire or time out. That said, no guarantees. This isn't a real company after all",
+    description: "Shorter links never expire or time out. That said, no guarantees. This isn't a real company after all!",
   },
   {
     name: 'Reporting',
@@ -42,7 +42,7 @@ export default function FeatureList() {
         <div className="max-w-3xl lg:max-w-4xl mb-5 lg:mb-0 mx-auto text-center">
           <h2 className="text-3xl md:text-4xl lg:text-6xl font-extrabold text-gray-900">The only link shortener you'll ever need</h2>
           <p className="mt-4 text-lg text-gray-500">
-            Features and plans, tailored to content creators and startups.
+            Well, maybe. No promises.
           </p>
         </div>
         <dl className="mt-12 space-y-10 sm:space-y-0 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 lg:grid-cols-4 lg:gap-x-8">
