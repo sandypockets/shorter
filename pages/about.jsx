@@ -35,6 +35,18 @@ export default function About() {
               <p>
                 That's where Shorter comes in. We were fed with links that covered the screen. So, we fixed it. And made it available to the world.
               </p>
+              <h3 className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                The <em>real</em> story
+              </h3>
+              <p className="mt-8 text-lg text-gray-500">
+                Shorter is a demo app. A passion project, built just for fun.
+              </p>
+              <p>
+                With that in mind, you can use Shorter as you'd like, but please understand that this is not a production app, and should not be used for actual business purposes.
+              </p>
+              <p>
+                THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+              </p>
               <div className="h-28" />
             </div>
           </div>

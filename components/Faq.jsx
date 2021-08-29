@@ -3,24 +3,45 @@ import { ChevronDownIcon } from '@heroicons/react/outline'
 
 const faqs = [
   {
+    question: "Is this a real company?",
+    answer:
+      <>
+        No.
+      </>
+  },
+  {
+    question: "Can I still use Shorter?",
+    answer:
+      <>
+        Yes. But there are no guarantees that Shorter its URLs will live forever.
+      </>
+  },
+  {
+    question: "Is it free?",
+    answer:
+      <>
+        Yes, Shorter is free. You might see some "Coming Soon" plans on the pricing page, but there is no intention of building them out. Shorter is just for fun.
+      </>
+  },
+  {
     question: "What's a link shortener?",
     answer:
       <>
-        A link shortener is a tool that converts long, hard to read links into short, shorter links that are easy to read.
+        A link shortener is a tool that converts long, hard to read links into shorter links that are easy to read.
       </>
   },
   {
     question: "What are the benefits of using a link shortener?",
     answer:
       <>
-        Whether you're a marketer, sharing links with UTM tracking, or a casual web surfer sharing links with family and friends, we can all agree on one thing: long links are ugly. Say goodbye to long links. Use a shorter one instead.
+        Long links are ugly. Don't let your links be ugly.
       </>
   },
   {
-    question: "How much does it cost?",
+    question: "Can I see the source code?",
     answer:
       <>
-        Shorter is free. Though, we do have plans to offer more features in paid subscription plans in the future.
+        Yes. It's on <a>GitHub</a>
       </>
   },
 ]

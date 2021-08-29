@@ -3,31 +3,31 @@ import { CheckIcon } from '@heroicons/react/outline'
 const features = [
   {
     name: 'Free',
-    description: 'Create as many links as you want. Shortn is completely free.',
+    description: "Shorter was built as a weekend passion project. It's not perfect, but it's completely free.",
   },
   {
-    name: 'Link list',
-    description: 'Login and view all the short links you\'ve created with your account.',
-  },
-  {
-    name: 'No expiry',
-    description: 'Shortn links never expire or time out, so you can share them with your clients confidently.',
-  },
-  {
-    name: 'Easy',
-    description: 'Create a short link in your account. Then start using it right away.',
+    name: 'Creating a shorter one is fast',
+    description: "Add the link to your account.Then start using it right away.",
   },
   {
     name: 'Mobile friendly',
-    description: 'Whether you\'re at your desk or on the go, create Shortn links from anywhere.',
-  },
-  {
-    name: 'Reporting',
-    description: 'Learn how frequently your links are getting clicked.',
+    description: 'Whether you\'re at your desk or on the go, create a shorter one from anywhere.',
   },
   {
     name: 'Edit links',
     description: 'Need to edit the URL? No problem. You can adjust your short links any time.',
+  },
+  {
+    name: 'All your links at a glance',
+    description: 'Login and view all the short links you\'ve created with your account.',
+  },
+  {
+    name: 'No expiry',
+    description: "Shorter links never expire or time out. That said, no guarantees. This isn't a real company after all",
+  },
+  {
+    name: 'Reporting',
+    description: "Good news! You won't even need to worry about this, since we don't offer reporting!",
   },
   {
     name: 'Minimal data collected',
