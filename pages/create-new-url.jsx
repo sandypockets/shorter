@@ -40,7 +40,7 @@ export default function CreateNewUrl() {
       .then(function (response) {
         console.log("URL POST response: ", response)
         setLoading(false)
-        router.push('/your-urls')
+        return router.push('/your-urls')
       })
       .catch(function (error) {
         console.log(error)
