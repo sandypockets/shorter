@@ -74,9 +74,11 @@ export default function Table(
                   </Link>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    <a href={url['long_url']} className="hover:text-gray-800">
-                      {url['long_url']}
-                    </a>
+                    <Link href={`/urls/${url['short_url']}`}>
+                      <a className="hover:text-gray-800">
+                        {url['long_url']}
+                      </a>
+                    </Link>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">{url['created_at']}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
