@@ -12,7 +12,7 @@ export default function RedirectPage () {
       }
     })
     .then(function (response) {
-      response && window.location.assign(`${response.data.data[0]['long_url']}`)
+      response && window.location.assign(`https://${response.data.data[0]['long_url']}`)
     })
 
   return (

@@ -13,14 +13,17 @@ function NewUrlForm({ session, loading, longUrl, setLongUrl, handleClear, handle
           <label htmlFor="longUrl" className="text-sm font-medium text-gray-700 px-5">
             Enter a new URL to be shortened
           </label>
-          <div className="mt-3">
+          <div className="mt-3 flex">
+          <span className="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm">
+              https://
+            </span>
             <input
               type="text"
               name="longUrl"
               id="longUrl"
-              placeholder="https://google.com"
+              placeholder="google.com"
               value={longUrl}
-              className="mx-auto max-w-lg block w-full shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm border-gray-300 rounded-md"
+              className="mx-auto max-w-lg block w-full shadow-sm focus:ring-green-500 focus:border-green-500 sm:text-sm border-gray-300 border-l-0 rounded-l-none rounded-md"
               onChange={(e) => setLongUrl(e.target.value)}
             />
           </div>
