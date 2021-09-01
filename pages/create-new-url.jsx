@@ -3,16 +3,14 @@ import NewUrlForm from "../components/Forms/NewUrlForm";
 import Container from "../components/Layout/Container";
 import LoadingWheel from "../components/Utils/LoadingWheel";
 import SignIn from "../components/Account/Auth";
-import {useEffect, useState} from "react";
-import {supabase} from "../utils/supabaseClient";
+import { useEffect, useState } from "react";
+import { supabase } from "../utils/supabaseClient";
 import axios from "axios";
-import { useRouter } from "next/router";
 
 export default function CreateNewUrl() {
   const [session, setSession] = useState(supabase.auth.session())
   const [loading, setLoading] = useState(true)
   const [longUrl, setLongUrl] = useState(null)
-  const router = useRouter()
 
   const generateRandomString =() => {
     return Math.random().toString(26).substring(2, 8);
@@ -25,13 +23,6 @@ export default function CreateNewUrl() {
       setLoading(false)
     }, 300)
   }, [session])
-
-  const changePage = () => {
-    setTimeout(() => {
-      router.push('/your-urls')
-    }, 200)
-  }
-
 
   function handleSubmit (event) {
     event.preventDefault()
@@ -47,7 +38,6 @@ export default function CreateNewUrl() {
       .then(function (response) {
         console.log("URL POST response: ", response)
         setLoading(false)
-        changePage()
       })
       .catch(function (error) {
         console.log(error)
