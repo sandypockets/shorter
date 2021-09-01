@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {supabase} from "../../utils/supabaseClient";
 import axios from "axios";
 
-export default function EditUrlForm({ shortUrl, urlId, currentLongUrl, setCurrentLongUrl, setEditedUrl }) {
+export default function EditUrlForm({ shortUrl, urlId, currentLongUrl, setCurrentLongUrl, setEditedUrl, setOpen }) {
   const [longUrl, setLongUrl] = useState(currentLongUrl)
 
   function handleSubmit (event) {
@@ -28,6 +28,7 @@ export default function EditUrlForm({ shortUrl, urlId, currentLongUrl, setCurren
 
   const handleClear = () => {
     setCurrentLongUrl(longUrl)
+    setOpen(false)
   }
 
   const handleChange = (event) => {

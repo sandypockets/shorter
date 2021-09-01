@@ -42,7 +42,7 @@ export default function SlideOver({ open, setOpen, urlId, shortUrl, currentLongU
                         </div>
                       </div>
                       <div className="mt-6 relative flex-1 px-4 sm:px-6">
-                        <EditUrlForm setEditedUrl={setEditedUrl} urlId={urlId} shortUrl={shortUrl} currentLongUrl={currentLongUrl} setCurrentLongUrl={setCurrentLongUrl} />
+                        <EditUrlForm setEditedUrl={setEditedUrl} urlId={urlId} shortUrl={shortUrl} currentLongUrl={currentLongUrl} setCurrentLongUrl={setCurrentLongUrl} setOpen={setOpen} />
                       </div>
                     </div>
                   </div>
