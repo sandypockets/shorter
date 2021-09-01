@@ -6,11 +6,13 @@ import SignIn from "../components/Account/Auth";
 import {useEffect, useState} from "react";
 import {supabase} from "../utils/supabaseClient";
 import axios from "axios";
+import { useRouter } from "next/router";
 
 export default function CreateNewUrl() {
   const [session, setSession] = useState(supabase.auth.session())
   const [loading, setLoading] = useState(true)
   const [longUrl, setLongUrl] = useState(null)
+  const router = useRouter()
 
   const generateRandomString =() => {
     return Math.random().toString(26).substring(2, 8);
@@ -38,12 +40,10 @@ export default function CreateNewUrl() {
       .then(function (response) {
         console.log("URL POST response: ", response)
         setLoading(false)
+        router.push('/your-urls')
       })
       .catch(function (error) {
         console.log(error)
-        setLoading(false)
-      })
-      .finally(function () {
         setLoading(false)
       })
   }
