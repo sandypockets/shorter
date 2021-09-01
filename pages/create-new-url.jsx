@@ -12,7 +12,6 @@ export default function CreateNewUrl() {
   const [session, setSession] = useState(supabase.auth.session())
   const [loading, setLoading] = useState(true)
   const [longUrl, setLongUrl] = useState(null)
-  const [urlCreated, setUrlCreated] = useState(false)
   const router = useRouter()
 
   const generateRandomString =() => {
@@ -27,12 +26,12 @@ export default function CreateNewUrl() {
     }, 300)
   }, [session])
 
-  useEffect(() => {
-    if (urlCreated) {
+  const changePage = () => {
+    setTimeout(() => {
       router.push('/your-urls')
-      setUrlCreated(false)
-    }
-  }, [urlCreated])
+    }, 200)
+  }
+
 
   function handleSubmit (event) {
     event.preventDefault()
@@ -48,7 +47,7 @@ export default function CreateNewUrl() {
       .then(function (response) {
         console.log("URL POST response: ", response)
         setLoading(false)
-        setUrlCreated(true)
+        changePage()
       })
       .catch(function (error) {
         console.log(error)
