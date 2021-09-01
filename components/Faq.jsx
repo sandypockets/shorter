@@ -24,6 +24,14 @@ const faqs = [
       </>
   },
   {
+    question: "Do I have to create an account?",
+    answer:
+      <>
+        <p className="pb-2">Yes. The short links you create are kept in your account, so you can edit or delete them as needed.</p>
+        <p>When you sign up, you'll be sent a magic link by email. Click that link to sign in.</p>
+      </>
+  },
+  {
     question: "What's a link shortener?",
     answer:
       <>
