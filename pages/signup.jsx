@@ -1,5 +1,10 @@
 import Auth from "../components/Account/Auth";
+import Layout from "../components/Layout/Layout";
 
 export default function SignUpPage() {
-  return <Auth registrationType="signup" />
+  return (
+    <Layout>
+      <Auth registrationType="signup" />
+    </Layout>
+  )
 }

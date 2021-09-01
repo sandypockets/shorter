@@ -1,5 +1,10 @@
 import Auth from "../components/Account/Auth";
+import Layout from "../components/Layout/Layout";
 
 export default function SignInPage() {
-  return <Auth registrationType="signin"/>
+  return (
+    <Layout>
+      <Auth registrationType="signin"/>
+    </Layout>
+  )
 }

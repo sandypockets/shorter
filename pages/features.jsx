@@ -4,7 +4,9 @@ import Layout from "../components/Layout/Layout";
 export default function Features() {
   return (
     <Layout>
-      <FeatureList />
+      <div className="mt-24">
+        <FeatureList />
+      </div>
     </Layout>
   )
 }

@@ -50,7 +50,7 @@ export default function Layout({ children }) {
   return (
     <div className="">
       <Navigation userData={userData} setUserData={setUserData} url={userData['avatar_url']} currentUrl={currentUrl} session={session} />
-      <div className="mt-24">
+      <div>
         {children}
       </div>
       <Footer />

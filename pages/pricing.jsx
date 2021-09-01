@@ -4,7 +4,9 @@ import PricingList from "../components/PricingList";
 export default function PricingPage() {
   return (
     <Layout>
-      <PricingList />
+      <div className="mt-24">
+        <PricingList />
+      </div>
     </Layout>
   )
 }

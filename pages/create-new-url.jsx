@@ -61,14 +61,14 @@ export default function CreateNewUrl() {
             </div>
           ) :
           !session ? <SignIn registrationType={'signin'} /> : (
-            <>
+            <div className="mt-24">
               <h1 className="text-4xl mb-10 tracking-tight font-extrabold flex justify-center">
                 Create a new URL
               </h1>
               <div className="flex justify-center">
                 <NewUrlForm session={session} loading={loading} setLoading={setLoading} longUrl={longUrl} setLongUrl={setLongUrl} handleClear={handleClear} handleSubmit={handleSubmit} />
               </div>
-            </>
+            </div>
           )}
       </Container>
     </Layout>
