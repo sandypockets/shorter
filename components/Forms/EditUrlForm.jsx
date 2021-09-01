@@ -23,6 +23,7 @@ export default function EditUrlForm({ shortUrl, urlId, currentLongUrl, setCurren
       })
       .finally(function () {
         setEditedUrl(currentLongUrl)
+        setOpen(false)
       })
   }
 
