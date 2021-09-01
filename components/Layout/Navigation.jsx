@@ -46,6 +46,8 @@ export default function Navigation({ currentUrl, session, url, userData, setUser
     router.push('/')
   }
 
+  console.log("auth.user", supabase.auth.user())
+
   useEffect(() => {
    userData['avatar_url'] && downloadImage(userData['avatar_url'])
   }, [userData['avatar_url']])
@@ -120,9 +122,6 @@ export default function Navigation({ currentUrl, session, url, userData, setUser
                       <span className="sr-only">Open user menu</span>
 
                       {loading ? (
-                        // <div
-                        //   className="h-8 w-8 rounded-full bg-gray-200 animate-pulse"
-                        // />
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>

@@ -1,7 +1,8 @@
 import Avatar from "../Account/Avatar";
 import {useState} from "react";
+import {supabase} from "../../utils/supabaseClient";
 
-export default function ProfileForm({ userData, setUserData, loading, updateProfile }) {
+export default function ProfileForm({ user, userData, setUserData, loading, updateProfile }) {
   const [imageBlob, setImageBlob] = useState(null)
 
   return (
@@ -67,7 +68,7 @@ export default function ProfileForm({ userData, setUserData, loading, updateProf
                   name="first-name"
                   id="first-name"
                   autoComplete="given-name"
-                  value={userData['first_name']}
+                  value={userData ? userData['first_name'] : ''}
                   placeholder="Nate"
                   className="shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md"
                   onChange={(e) => setUserData(prev => ({ ...prev, "first_name": e.target.value }))}
@@ -85,7 +86,7 @@ export default function ProfileForm({ userData, setUserData, loading, updateProf
                   name="last-name"
                   id="last-name"
                   autoComplete="family-name"
-                  value={userData['last_name']}
+                  value={userData ? userData['last_name'] : ''}
                   placeholder="Nickerson"
                   className="shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md"
                   onChange={(e) => setUserData(prev => ({ ...prev, "last_name": e.target.value }))}
@@ -103,8 +104,8 @@ export default function ProfileForm({ userData, setUserData, loading, updateProf
                   name="email"
                   type="email"
                   autoComplete="email"
-                  value={userData.email}
-                  placeholder="n.nickerson@gmail.com"
+                  value={userData ? userData.email : ''}
+                  placeholder={user.email}
                   className="shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md"
                   onChange={(e) => setUserData(prev => ({ ...prev, email: e.target.value }))}
                 />

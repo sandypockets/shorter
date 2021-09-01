@@ -71,7 +71,8 @@ function Account() {
         "last_name": userData["last_name"],
         "email": userData.email,
         "website": userData.website,
-        "avatar_url": userData["avatar_url"]
+        "avatar_url": userData["avatar_url"],
+        "user": user,
     })
       .catch(function (error) {
         console.log(error);
@@ -90,7 +91,7 @@ function Account() {
         </div>
       ) : user ? (
           <div className="max-w-3xl mx-auto">
-            <ProfileForm userData={userData} setUserData={setUserData} loading={loading} updateProfile={updateProfile} />
+            <ProfileForm user={user} userData={userData} setUserData={setUserData} loading={loading} updateProfile={updateProfile} />
             {/*<AccountForm userData={userData} setUserData={setUserData} loading={loading} updateProfile={updateProfile} />*/}
           </div>
         ) : (
