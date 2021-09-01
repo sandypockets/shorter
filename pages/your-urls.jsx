@@ -92,7 +92,7 @@ export default function YourUrls() {
                 <h1 className="text-4xl mt-24 mb-10 tracking-tight font-extrabold flex justify-center">
                   Your short URLs
                 </h1>
-                {urlsList.length > 1 ? (
+                {urlsList.length ? (
                   <>
                     <Table setShowModal={setShowModal} urlsList={urlsList} urlId={urlId} setUrlId={setUrlId} open={open} setOpen={setOpen} setShortUrl={setShortUrl} setCurrentLongUrl={setCurrentLongUrl} />
                     <SlideOver setEditedUrl={setEditedUrl} urlId={urlId} open={open} setOpen={setOpen} shortUrl={shortUrl} currentLongUrl={currentLongUrl} setCurrentLongUrl={setCurrentLongUrl} />

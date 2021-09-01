@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import axios from 'axios'
-import LoadingWheel from "../../components/Utils/LoadingWheel";
+import LoadingWheel from "../components/Utils/LoadingWheel";
 
 export default function RedirectPage () {
   const router = useRouter()

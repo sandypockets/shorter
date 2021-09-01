@@ -67,14 +67,14 @@ export default function Table(
               {urlsList.map((url, urlIdx) => (
                 <tr key={urlIdx} className={urlIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-600">
-                    <Link href={`/urls/${url['short_url']}`}>
+                    <Link href={`/${url['short_url']}`}>
                       <a className="hover:text-gray-800">
-                        {`shorter.one/urls/${url['short_url']}`}
+                        {`shorter.one/${url['short_url']}`}
                       </a>
                   </Link>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    <Link href={`/urls/${url['short_url']}`}>
+                    <Link href={`${url['short_url']}`}>
                       <a className="hover:text-gray-800">
                         {url['long_url']}
                       </a>
