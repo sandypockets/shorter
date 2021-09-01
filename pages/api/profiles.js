@@ -45,25 +45,25 @@ async function updateProfile(req, res) {
   }
 }
 
-async function updateEmail(req, res) {
-  const { email } = req.body
-  try {
-    const { user, error } = await supabase.auth.update({
-      data: { email }
-    })
-      .then((response) => {
-        res.status(response.status).json({ response })
-      })
-  } catch (error) {
-    res.status(error.status)
-    res.send(error.message)
-  }
-}
+// async function updateEmail(req, res) {
+//   const { email } = req.body
+//   try {
+//     const { user, error } = await supabase.auth.update({
+//       data: { email }
+//     })
+//       .then((response) => {
+//         res.status(response.status).json({ response })
+//       })
+//   } catch (error) {
+//     res.status(error.status)
+//     res.send(error.message)
+//   }
+// }
 
 export default function handler(req, res) {
   if (req.method === 'POST') {
     updateProfile(req, res)
-    updateEmail(req, res)
+    // updateEmail(req, res)
   } else if (req.method === 'GET') {
     getProfile(req, res)
   } else {
