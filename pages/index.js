@@ -29,7 +29,7 @@ export default function Index() {
   return (
     <>
       <Layout>
-          <HomePage />
+        <HomePage />
       </Layout>
     </>
   )
