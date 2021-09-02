@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import {useState} from "react";
 
 export default function Table(
   {
@@ -11,6 +12,9 @@ export default function Table(
     setShowModal
   }
   ) {
+
+  const [isCopied, setIsCopied] = useState(false)
+  const [copyText, setCopyText] = useState(null)
 
   const handleEditClick = (id, short, long) => {
     setUrlId(id)
@@ -32,8 +36,17 @@ export default function Table(
     return a.id - b.id
   })
 
+  const handleCopy = (urlToCopy) => {
+    setCopyText(urlToCopy)
+    navigator.clipboard.writeText(urlToCopy)
+    setIsCopied(true)
+    setTimeout(() => {
+      setIsCopied(false)
+    }, 2000)
+  }
+
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full w-11/12 sm:w-3/4 lg:w-2/3 mx-auto">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
           <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -45,6 +58,12 @@ export default function Table(
                   className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                 >
                   Shorter one
+                </th>
+                <th
+                  scope="col"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Copy
                 </th>
                 <th
                   scope="col"
@@ -66,14 +85,39 @@ export default function Table(
               <tbody>
               {urlsList.map((url, urlIdx) => (
                 <tr key={urlIdx} className={urlIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-600">
+
                     <Link href={`/${url['short_url']}`}>
                       <a className="hover:text-gray-800">
                         {`shorter.one/${url['short_url']}`}
                       </a>
-                  </Link>
+                    </Link>
+
+
+
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-600 flex">
+                    <button
+                      onClick={() => {handleCopy(`shorter.one/${url['short_url']}`)}}
+                      className="px-2"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                      </svg>
+                    </button>
+
+
+                      <span className="w-16">
+                    {isCopied && copyText === `shorter.one/${url['short_url']}` &&
+                      <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800">
+                        Copied!
+                      </span>
+                    }
+                      </span>
+
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 max-w-xs overflow-auto">
                     <Link href={`${url['short_url']}`}>
                       <a className="hover:text-gray-800">
                         {url['long_url']}
