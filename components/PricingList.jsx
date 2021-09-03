@@ -94,7 +94,7 @@ export default function PricingList() {
             </div>
 
             <a
-              href="#"
+              href="/signup"
               className={classNames(
                 tier.mostPopular
                   ? 'bg-green-50 text-green-700 hover:bg-green-100'
