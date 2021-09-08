@@ -1,5 +1,29 @@
 # Shorter
-Shorter is a simple URL shortener, built with Next.js, React, Tailwind CSS, and Supabase.
+Shorter is a super simple URL shortener. Shorter is currently live at [shorter.one](https://shorter.one), and you can create as many URLs as you'd like for free. However since it was built just for fun, the URLs might stop working at some point in the future. Until then, please enjoy it.
+
+## Built with
+
+* Next.js
+* React
+* Tailwind CSS
+* Storybook
+
+## Getting started
+To run Shorter locally, you will need a Supabase account. 
+
+1. Fork and clone this project
+2. Install dependencies
+```shell
+yarn install
+```
+3. Create a new `.env.local` file
+4. Copy the contents of `.env.local.example` into the new `.env.local` file
+5. Replace the placeholders in the `.env.local` file with your real Supabase credentials
+6. Start the development server
+```shell
+yarn dev
+```
+7. Navigate to [`localhost:3000`](http://localhost:3000) in your browser
 
 ## Dependencies
 * Next 11.01
@@ -33,3 +57,5 @@ Shorter is a simple URL shortener, built with Next.js, React, Tailwind CSS, and 
 * [Supabase](https://supabase.io/)
 * [Storybook](https://storybook.js.org/docs/react/get-started/introduction)
 * [Vercel](https://vercel.com/)
+
+## Screenshots
