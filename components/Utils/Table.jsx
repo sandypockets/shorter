@@ -89,7 +89,7 @@ export default function Table(
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-600">
 
                     <Link href={`/${url['short_url']}`}>
-                      <a className="hover:text-gray-800">
+                      <a className="hover:text-green-600">
                         {`shorter.one/${url['short_url']}`}
                       </a>
                     </Link>
@@ -100,7 +100,7 @@ export default function Table(
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-600 flex">
                     <button
                       onClick={() => {handleCopy(`shorter.one/${url['short_url']}`)}}
-                      className="px-2"
+                      className="px-2 hover:text-green-600"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
@@ -110,7 +110,7 @@ export default function Table(
 
                       <span className="w-16">
                     {isCopied && copyText === `shorter.one/${url['short_url']}` &&
-                      <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800">
+                      <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-200 text-gray-900">
                         Copied!
                       </span>
                     }
