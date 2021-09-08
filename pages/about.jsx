@@ -3,7 +3,7 @@ import Layout from "../components/Layout/Layout";
 export default function About() {
   return (
     <Layout>
-    <div className="relative bg-white">
+    <div className="relative bg-white pt-24">
       <div className="lg:absolute lg:inset-0">
         <div className="lg:absolute lg:inset-y-0 lg:left-0 lg:w-1/2">
           <img
