@@ -8,6 +8,12 @@ Shorter is a super simple URL shortener. Shorter is currently live at [shorter.o
 * Tailwind CSS
 * Storybook
 
+## Features
+
+* Login with magic link
+* Create, modify, and delete short URLs
+* Click to copy short URL to clipboard
+
 ## Getting started
 To run Shorter locally, you will need a Supabase account. 
 
@@ -37,7 +43,7 @@ yarn dev
 * @tailwindcss/forms 0.3.3
 * @tailwindcss/typography 0.4.1
 
-## Dev Dependencies
+## Dev dependencies
 * storybook/addon-essentials 6.3.0
 * storybook/addon-links 6.3.0
 * storybook/react 6.3.0
@@ -47,7 +53,7 @@ yarn dev
 * serve 11.3.2
 * tailwindcss `tailwindcss/postcss7-compat@^2.2.4`
 
-## Additional Docs
+## Helpful docs
 * [React.js](https://reactjs.org/docs/getting-started.html)
 * [Next.js](https://nextjs.org/docs/getting-started)
 * [PostCSS](https://github.com/postcss/postcss/tree/main/docs)
@@ -59,3 +65,18 @@ yarn dev
 * [Vercel](https://vercel.com/)
 
 ## Screenshots
+
+![shorter homepage](https://github.com/sandypockets/shorter/blob/main/docs/shorter-home.png?raw=true)
+
+![shorter your urls list](https://github.com/sandypockets/shorter/blob/main/docs/shorter-your-urls.png?raw=true)
+
+![create new short url](https://github.com/sandypockets/shorter/blob/main/docs/shorter-create-new.png?raw=true)
+
+![shorter features list](https://github.com/sandypockets/shorter/blob/main/docs/shorter-features.png?raw=true)
+
+![shorter pricing page](https://github.com/sandypockets/shorter/blob/main/docs/shorter-pricing.png?raw=true)
+
+
+
+
+
