@@ -87,16 +87,13 @@ export default function Table(
                 <tr key={urlIdx} className={urlIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
 
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-600">
-
                     <Link href={`/${url['short_url']}`}>
                       <a className="hover:text-green-600">
                         {`shorter.one/${url['short_url']}`}
                       </a>
                     </Link>
-
-
-
                   </td>
+
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-600 flex">
                     <button
                       onClick={() => {handleCopy(`shorter.one/${url['short_url']}`)}}
@@ -107,13 +104,12 @@ export default function Table(
                       </svg>
                     </button>
 
-
                       <span className="w-16">
-                    {isCopied && copyText === `shorter.one/${url['short_url']}` &&
-                      <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-200 text-gray-900">
-                        Copied!
-                      </span>
-                    }
+                        {isCopied && copyText === `shorter.one/${url['short_url']}` &&
+                          <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-200 text-gray-900">
+                            Copied!
+                          </span>
+                        }
                       </span>
 
                   </td>
