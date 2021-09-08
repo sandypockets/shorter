@@ -89,7 +89,7 @@ export default function Navigation({ currentUrl, session, url, userData, setUser
                 <div className={"hidden sm:ml-6 sm:flex sm:space-x-8"}>
                   <Link href={'/'}>
                     <a
-                      className={"border-transparent text-green-600 hover:border-green-500 hover:text-green-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"}
+                      className={"border-transparent text-green-600 hover:border-green-500 hover:text-green-700 inline-flex items-center px-1 pt-1 border-b-2 text-3xl font-bold font-inter tracking-tighter"}
                     >
                       Shorter
                     </a>

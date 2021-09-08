@@ -4,6 +4,7 @@ import Navigation from "./Navigation";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Footer from "./Footer";
+import Meta from "./Meta";
 
 export default function Layout({ children }) {
   const [userData, setUserData] = useState({
@@ -48,7 +49,8 @@ export default function Layout({ children }) {
   }, [])
 
   return (
-    <div className="">
+    <div className="font-inter">
+      <Meta />
       <Navigation userData={userData} setUserData={setUserData} url={userData['avatar_url']} currentUrl={currentUrl} session={session} />
       <div>
         {children}
