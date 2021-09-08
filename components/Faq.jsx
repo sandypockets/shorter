@@ -32,10 +32,25 @@ const faqs = [
       </>
   },
   {
+    question: "Why didn't I get the magic link to sign in?",
+    answer:
+      <>
+        <p className="pb-2">Check your spam or junk folder.</p>
+        <p>Keep in mind, emails like gmail will often prevent you from clicking links in your spam folder. If you got the email, but it doesn't have a clickable link, then try moving the email from spam to your inbox.</p>
+      </>
+  },
+  {
+    question: "Can I just sign up with an email and password?",
+    answer:
+      <>
+        No. While this might be something we offer in the future, a magic link is currently the only way to sign up or sign in to Shorter.
+      </>
+  },
+  {
     question: "What's a link shortener?",
     answer:
       <>
-        A link shortener is a tool that converts long, hard to read links into shorter links that are easy to read.
+        A link shortener is a tool that converts long, hard to read links into shorter links that are easy to read and share.
       </>
   },
   {
@@ -49,7 +64,7 @@ const faqs = [
     question: "Can I see the source code?",
     answer:
       <>
-        Yes. It's on <a href="https://github.com/sandypockets/shorter">GitHub</a>
+        Yes. It's on <a className="text-green-500" href="https://github.com/sandypockets/shorter">GitHub</a>.
       </>
   },
 ]
