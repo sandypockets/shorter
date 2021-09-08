@@ -42,10 +42,12 @@ export default function Meta() {
         name="theme-color"
         content="#000"
       />
+      <title>Shorter | URL Shortener</title>
       <meta
         name="description"
-        content={`URL Shortener.`}
+        content={`URL Shortener. Forget long, ugly URLs. Share a shorter one instead.`}
       />
+
     </Head>
   )
 }
