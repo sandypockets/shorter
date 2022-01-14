@@ -7,16 +7,6 @@ export default function Auth({ registrationType }) {
   const [email, setEmail] = useState('')
   const [content, setContent] = useState('signup')
 
-  // useEffect(() => {
-  //   if (registrationType === 'signup') {
-  //     setContent('signup')
-  //   }
-  //   if (registrationType === 'signin') {
-  //     setContent('signin')
-  //   }
-  // }, [])
-
-
   const handleLogin = async (email) => {
     try {
       setLoading(true)
