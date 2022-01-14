@@ -1,6 +1,4 @@
-
-
-function NewUrlForm({  longUrl, setLongUrl, handleClear, handleSubmit }) {
+export default function NewUrlForm({  longUrl, setLongUrl, handleClear, handleSubmit }) {
   return (
     <>
       <form className="w-3/4 md:w-1/2 lg:w-1/3 mx-auto bg-gray-100 p-5 rounded-md shadow mb-10 md:mb-36">
@@ -45,6 +43,3 @@ function NewUrlForm({  longUrl, setLongUrl, handleClear, handleSubmit }) {
     </>
   )
 }
-
-
-export default NewUrlForm

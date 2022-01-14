@@ -1,15 +1,14 @@
-import Layout from "../components/Layout/Layout";
-import {useEffect, useState} from "react";
-import {supabase} from "../utils/supabaseClient";
+import { useEffect, useState } from "react";
+import { supabase } from "../utils/supabaseClient";
 import axios from "axios";
-import Link from "next/link";
-import Table from "../components/Utils/Table";
-import LoadingWheel from "../components/Utils/LoadingWheel";
-import SlideOver from "../components/Utils/SlideOver";
-import Modal from "../components/Utils/Modal";
 import Container from "../components/Layout/Container";
-import SignIn from "../components/Account/Auth";
 import EmptyUrls from "../components/Utils/EmptyUrls";
+import Layout from "../components/Layout/Layout";
+import LoadingWheel from "../components/Utils/LoadingWheel";
+import Modal from "../components/Utils/Modal";
+import SignIn from "../components/Account/Auth";
+import SlideOver from "../components/Utils/SlideOver";
+import Table from "../components/Utils/Table";
 
 export default function YourUrls() {
   const [urlsList, setUrlsList] = useState([])
@@ -79,38 +78,35 @@ export default function YourUrls() {
     }
   }
 
-
   return (
-    <>
-        <Layout>
-          <Container>
-            {loading ? (
-              <div className="flex justify-center">
-                <LoadingWheel />
-              </div>
-            ) : !user ? <SignIn /> :
-              (
+    <Layout>
+      <Container>
+        {loading ? (
+          <div className="flex justify-center">
+            <LoadingWheel />
+          </div>
+        ) : !user ? <SignIn /> :
+          (
+          <>
+            <h1 className="text-4xl mt-24 mb-10 tracking-tight font-extrabold flex justify-center">
+              Your short URLs
+            </h1>
+            {urlsList.length ? (
               <>
-                <h1 className="text-4xl mt-24 mb-10 tracking-tight font-extrabold flex justify-center">
-                  Your short URLs
-                </h1>
-                {urlsList.length ? (
-                  <>
-                    <Table setShowModal={setShowModal} urlsList={urlsList} urlId={urlId} setUrlId={setUrlId} open={open} setOpen={setOpen} setShortUrl={setShortUrl} setCurrentLongUrl={setCurrentLongUrl} />
-                    <SlideOver setEditedUrl={setEditedUrl} urlId={urlId} open={open} setOpen={setOpen} shortUrl={shortUrl} currentLongUrl={currentLongUrl} setCurrentLongUrl={setCurrentLongUrl} />
-                  </>
-                ) : (
-                  <>
-                  <EmptyUrls />
-                  </>
-                )}
-                {showModal && (
-                  <Modal deleteLoading={deleteLoading} deleteUrl={deleteUrl} showModal={showModal} setShowModal={setShowModal} urlId={urlId} setUrlId={setUrlId} />
-                )}
+                <Table setShowModal={setShowModal} urlsList={urlsList} urlId={urlId} setUrlId={setUrlId} open={open} setOpen={setOpen} setShortUrl={setShortUrl} setCurrentLongUrl={setCurrentLongUrl} />
+                <SlideOver setEditedUrl={setEditedUrl} urlId={urlId} open={open} setOpen={setOpen} shortUrl={shortUrl} currentLongUrl={currentLongUrl} setCurrentLongUrl={setCurrentLongUrl} />
+              </>
+            ) : (
+              <>
+              <EmptyUrls />
               </>
             )}
-          </Container>
-        </Layout>
-    </>
+            {showModal && (
+              <Modal deleteLoading={deleteLoading} deleteUrl={deleteUrl} showModal={showModal} setShowModal={setShowModal} urlId={urlId} setUrlId={setUrlId} />
+            )}
+          </>
+        )}
+      </Container>
+    </Layout>
   )
 }

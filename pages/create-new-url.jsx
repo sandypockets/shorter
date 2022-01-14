@@ -1,22 +1,18 @@
-import Layout from "../components/Layout/Layout";
-import NewUrlForm from "../components/Forms/NewUrlForm";
-import Container from "../components/Layout/Container";
-import LoadingWheel from "../components/Utils/LoadingWheel";
-// import SignIn from "../components/Account/Auth";
-import EmailPasswordAuth from "../components/Account/EmailPasswordAuth";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { supabase } from "../utils/supabaseClient";
 import axios from "axios";
+import Container from "../components/Layout/Container";
+import EmailPasswordAuth from "../components/Account/EmailPasswordAuth";
+import Layout from "../components/Layout/Layout";
+import LoadingWheel from "../components/Utils/LoadingWheel";
+import NewUrlForm from "../components/Forms/NewUrlForm";
 
 export default function CreateNewUrl() {
-  // const [session, setSession] = useState(supabase.auth.session())
   const [loading, setLoading] = useState(true)
   const [longUrl, setLongUrl] = useState(null)
-
   const user = supabase.auth.user()
-
-  console.log("USER!", user)
-  console.log("USER2!", supabase.auth.session())
+  const router = useRouter()
 
   const generateRandomString =() => {
     return Math.random().toString(26).substring(2, 8);
@@ -44,6 +40,7 @@ export default function CreateNewUrl() {
       .then(function (response) {
         console.log("URL POST response: ", response)
         setLoading(false)
+        router.push('/your-urls')
       })
       .catch(function (error) {
         console.log(error)
@@ -69,7 +66,13 @@ export default function CreateNewUrl() {
                 Create a new URL
               </h1>
               <div className="flex justify-center">
-                <NewUrlForm setLoading={setLoading} longUrl={longUrl} setLongUrl={setLongUrl} handleClear={handleClear} handleSubmit={handleSubmit} />
+                <NewUrlForm
+                  setLoading={setLoading}
+                  longUrl={longUrl}
+                  setLongUrl={setLongUrl}
+                  handleClear={handleClear}
+                  handleSubmit={handleSubmit}
+                />
               </div>
             </div>
           )}
