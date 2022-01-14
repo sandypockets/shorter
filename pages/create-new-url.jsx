@@ -8,21 +8,23 @@ import { supabase } from "../utils/supabaseClient";
 import axios from "axios";
 
 export default function CreateNewUrl() {
-  const [session, setSession] = useState(supabase.auth.session())
+  // const [session, setSession] = useState(supabase.auth.session())
   const [loading, setLoading] = useState(true)
   const [longUrl, setLongUrl] = useState(null)
+
+  const user = supabase.auth.user()
 
   const generateRandomString =() => {
     return Math.random().toString(26).substring(2, 8);
   }
-
-  // Loading delay
-  useEffect(() => {
-    setLoading(true)
-    setTimeout(() => {
-      setLoading(false)
-    }, 300)
-  }, [session])
+  //
+  // // Loading delay
+  // useEffect(() => {
+  //   setLoading(true)
+  //   setTimeout(() => {
+  //     setLoading(false)
+  //   }, 300)
+  // }, [session])
 
   function handleSubmit (event) {
     event.preventDefault()
@@ -57,13 +59,13 @@ export default function CreateNewUrl() {
               <LoadingWheel />
             </div>
           ) :
-          !session ? <SignIn registrationType={'signin'} /> : (
+          !user ? <SignIn registrationType={'signin'} /> : (
             <div className="mt-24">
               <h1 className="text-4xl mb-10 tracking-tight font-extrabold flex justify-center">
                 Create a new URL
               </h1>
               <div className="flex justify-center">
-                <NewUrlForm session={session} loading={loading} setLoading={setLoading} longUrl={longUrl} setLongUrl={setLongUrl} handleClear={handleClear} handleSubmit={handleSubmit} />
+                <NewUrlForm setLoading={setLoading} longUrl={longUrl} setLongUrl={setLongUrl} handleClear={handleClear} handleSubmit={handleSubmit} />
               </div>
             </div>
           )}

@@ -1,11 +1,6 @@
-import axios from 'axios'
-import { useEffect, useState } from "react";
-import { supabase } from "../../utils/supabaseClient";
-import LoadingWheel from "../Utils/LoadingWheel";
-import SignIn from "../Account/Auth";
-import Link from 'next/link'
 
-function NewUrlForm({ session, loading, longUrl, setLongUrl, handleClear, handleSubmit }) {
+
+function NewUrlForm({  longUrl, setLongUrl, handleClear, handleSubmit }) {
   return (
     <>
       <form className="w-3/4 md:w-1/2 lg:w-1/3 mx-auto bg-gray-100 p-5 rounded-md shadow mb-10 md:mb-36">
