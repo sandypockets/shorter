@@ -1,23 +1,49 @@
 import { useState } from "react";
 import { supabase } from "../../utils/supabaseClient";
 import Link from 'next/link'
+import { useRouter } from "next/router";
 
 export default function Auth({ registrationType }) {
   const [loading, setLoading] = useState(false)
   const [email, setEmail] = useState('')
-  const [content, setContent] = useState('signup')
+  const [password, setPassword] = useState('')
+  const router = useRouter()
 
-  const handleLogin = async (email) => {
-    try {
-      setLoading(true)
-      const { error } = await supabase.auth.signIn({ email })
-      if (error) throw error
-      alert('Check your email for the login link!')
-    } catch (error) {
-      alert(error.error_description || error.message)
-    } finally {
-      setLoading(false)
+  const handleLogin = async (email, password) => {
+    if (registrationType === 'signup') {
+      try {
+        setLoading(true)
+        const { user, error } = await supabase.auth.signUp({
+          email: email,
+          password: password,
+        })
+        if (error) throw error
+        if (user) console.log(user)
+      } catch (error) {
+        alert(error.error_description || error.message)
+      } finally {
+        setLoading(false)
+        router.push('/create-new-url')
+      }
     }
+
+    if (registrationType === 'signin') {
+      try {
+        setLoading(true)
+        const { user, error } = await supabase.auth.signIn({
+          email: email,
+          password: password,
+        })
+        if (error) throw error
+        if (user) console.log(user)
+      } catch (error) {
+        alert(error.error_description || error.message)
+      } finally {
+        setLoading(false)
+        router.push('/create-new-url')
+      }
+    }
+
   }
 
   return (
@@ -76,12 +102,29 @@ export default function Auth({ registrationType }) {
                 </div>
 
                 <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                    Password
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      id="password"
+                      name="password"
+                      type="password"
+                      autoComplete="password"
+                      required
+                      className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                  </div>
+                </div>
+
+                <div>
                   <button
                     type="submit"
                     className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                     onClick={(e) => {
                       e.preventDefault()
-                      handleLogin(email)
+                      return handleLogin(email, password)
                     }}
                     disabled={loading}
                   >

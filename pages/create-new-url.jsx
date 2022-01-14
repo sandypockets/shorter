@@ -2,7 +2,8 @@ import Layout from "../components/Layout/Layout";
 import NewUrlForm from "../components/Forms/NewUrlForm";
 import Container from "../components/Layout/Container";
 import LoadingWheel from "../components/Utils/LoadingWheel";
-import SignIn from "../components/Account/Auth";
+// import SignIn from "../components/Account/Auth";
+import EmailPasswordAuth from "../components/Account/EmailPasswordAuth";
 import { useEffect, useState } from "react";
 import { supabase } from "../utils/supabaseClient";
 import axios from "axios";
@@ -14,17 +15,20 @@ export default function CreateNewUrl() {
 
   const user = supabase.auth.user()
 
+  console.log("USER!", user)
+  console.log("USER2!", supabase.auth.session())
+
   const generateRandomString =() => {
     return Math.random().toString(26).substring(2, 8);
   }
-  //
-  // // Loading delay
-  // useEffect(() => {
-  //   setLoading(true)
-  //   setTimeout(() => {
-  //     setLoading(false)
-  //   }, 300)
-  // }, [session])
+
+  // Loading delay
+  useEffect(() => {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 300)
+  }, [user])
 
   function handleSubmit (event) {
     event.preventDefault()
@@ -59,7 +63,7 @@ export default function CreateNewUrl() {
               <LoadingWheel />
             </div>
           ) :
-          !user ? <SignIn registrationType={'signin'} /> : (
+          !user ? <EmailPasswordAuth registrationType={'signin'} /> : (
             <div className="mt-24">
               <h1 className="text-4xl mb-10 tracking-tight font-extrabold flex justify-center">
                 Create a new URL

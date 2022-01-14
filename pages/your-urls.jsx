@@ -26,6 +26,8 @@ export default function YourUrls() {
   const [isDeleted, setIsDeleted] = useState(false)
   const [deleteLoading, setDeleteLoading] = useState(false)
 
+  const user = supabase.auth.user()
+
   // Loading delay
   useEffect(() => {
     setLoading(true)
@@ -86,7 +88,7 @@ export default function YourUrls() {
               <div className="flex justify-center">
                 <LoadingWheel />
               </div>
-            ) : !session ? <SignIn /> :
+            ) : !user ? <SignIn /> :
               (
               <>
                 <h1 className="text-4xl mt-24 mb-10 tracking-tight font-extrabold flex justify-center">
