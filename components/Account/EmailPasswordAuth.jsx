@@ -79,14 +79,6 @@ export default function EmailPasswordAuth({ registrationType }) {
     }
   }, [])
 
-  useEffect(() => {
-    if (supabase.auth.session()) {
-      router.push('/app/')
-    }
-  }, [])
-
-
-
   function Button({ type, onClickHandler, disabled=false, children }) {
     return (
       <button
@@ -159,7 +151,7 @@ export default function EmailPasswordAuth({ registrationType }) {
                 <div className="mx-2 pt-2">
                   <Button type="submit" onClickHandler={(e) => {
                     e.preventDefault()
-                    content === 'signup' ? handleSignUp(email, password, name).then(() => setTimeout(() => { return router.push('/app') }, 1000)) : handleSignIn(email, password, router)
+                    content === 'signup' ? handleSignUp(email, password, name).then(() => setTimeout(() => { return router.push('/create-new-url') }, 1000)) : handleSignIn(email, password, router)
                   }}>
                     {content === 'signin' ? "Sign in" : "Sign up"}
                   </Button>
